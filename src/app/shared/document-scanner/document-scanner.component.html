@@ -1,0 +1,58 @@
+<div class="scanner-container" *ngIf="isMobileOrTablet">
+  <h2 class="scanner-title">Escanear Documento</h2>
+
+  <div class="video-wrapper" *ngIf="showWebcam">
+    <webcam
+      [trigger]="triggerObservable"
+      (imageCapture)="handleImage($event)"
+      [videoOptions]="{ facingMode: 'environment' }"
+      class="webcam-feed"
+    ></webcam>
+  </div>
+
+  <div class="preview-wrapper" *ngIf="capturedImage">
+    <img [src]="capturedImage" alt="Imagen capturada" class="preview-img" />
+  </div>
+
+  <div class="acciones">
+    <button
+      *ngIf="showWebcam"
+      mat-raised-button
+      color="primary"
+      (click)="captureImage()"
+    >
+      <mat-icon>photo_camera</mat-icon>
+      Tomar Foto
+    </button>
+
+    <div *ngIf="cargando" class="loader">
+      <mat-icon>hourglass_empty</mat-icon>
+      <p>Procesando texto, por favor espera...</p>
+    </div>
+
+    <button
+      *ngIf="capturedImage"
+      mat-raised-button
+      color="accent"
+      (click)="procesarImagen()"
+    >
+      <mat-icon>description</mat-icon>
+      Generar PDF
+    </button>
+
+    <button
+      *ngIf="capturedImage"
+      mat-stroked-button
+      color="warn"
+      (click)="retakePhoto()"
+    >
+      <mat-icon>replay</mat-icon>
+      Repetir
+    </button>
+
+    <button mat-stroked-button color="warn" (click)="cerrar()">
+      <mat-icon>close</mat-icon>
+      Cancelar
+    </button>
+  </div>
+</div>
