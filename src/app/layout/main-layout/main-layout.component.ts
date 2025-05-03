@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 // Tus propios componentes
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { HeaderComponent } from '../header/header.component';
+import { appVersion } from '../../../../src/enviroments/version';
 
 @Component({
   selector: 'app-main-layout',
@@ -32,4 +33,7 @@ import { HeaderComponent } from '../header/header.component';
   styleUrls: ['../main-layout/main-layout.component.scss']
 })
 
-export class MainLayoutComponent { opened = false; }
+export class MainLayoutComponent {
+  version = appVersion;
+  opened = false;
+}
