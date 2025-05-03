@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+::ng-deep .scanner-dialog-fullscreen .mat-dialog-container {
+    padding: 0;
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+}
