@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "prebuild": "ts-node scripts/set-version.ts",
-    "build": "ng build",
+    "build": "ng build --configuration=production",
+    "build:prod": "ng build --configuration production",
+    "deploy": "npm run build:prod && firebase deploy",
     "start": "ng serve",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
