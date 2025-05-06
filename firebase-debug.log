@@ -1,0 +1,58 @@
+[debug] [2025-05-05T03:25:48.092Z] ----------------------------------------------------------------------
+[debug] [2025-05-05T03:25:48.462Z] Command:       /Volumes/DiscoMac/DevTools/nvm/versions/node/v22.8.0/bin/node /Volumes/DiscoMac/DevTools/nvm/versions/node/v22.8.0/bin/firebase serve
+[debug] [2025-05-05T03:25:48.462Z] CLI Version:   14.2.2
+[debug] [2025-05-05T03:25:48.463Z] Platform:      darwin
+[debug] [2025-05-05T03:25:48.463Z] Node Version:  v22.8.0
+[debug] [2025-05-05T03:25:48.463Z] Time:          Sun May 04 2025 21:25:48 GMT-0600 (Central Standard Time)
+[debug] [2025-05-05T03:25:48.463Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-05-05T03:25:48.464Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2025-05-05T03:25:48.991Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-05-05T03:25:48.992Z] > authorizing via signed-in user (prosystem155@gmail.com)
+[debug] [2025-05-05T03:25:48.992Z] [iam] checking project iglesia-inmaculada-concepcion for permissions ["firebase.projects.get"]
+[debug] [2025-05-05T03:25:48.992Z] Checked if tokens are valid: false, expires at: 1746378527133
+[debug] [2025-05-05T03:25:48.992Z] Checked if tokens are valid: false, expires at: 1746378527133
+[debug] [2025-05-05T03:25:48.992Z] > refreshing access token with scopes: []
+[debug] [2025-05-05T03:25:48.992Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-05-05T03:25:48.992Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-05-05T03:25:49.286Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2025-05-05T03:25:49.286Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2025-05-05T03:25:49.298Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-05-05T03:25:49.298Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-05-05T03:25:49.306Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/iglesia-inmaculada-concepcion:testIamPermissions [none]
+[debug] [2025-05-05T03:25:49.306Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/iglesia-inmaculada-concepcion:testIamPermissions x-goog-quota-user=projects/iglesia-inmaculada-concepcion
+[debug] [2025-05-05T03:25:49.306Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/iglesia-inmaculada-concepcion:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-05-05T03:25:49.632Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/iglesia-inmaculada-concepcion:testIamPermissions 200
+[debug] [2025-05-05T03:25:49.632Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/iglesia-inmaculada-concepcion:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-05-05T03:25:49.632Z] Checked if tokens are valid: true, expires at: 1746419148298
+[debug] [2025-05-05T03:25:49.632Z] Checked if tokens are valid: true, expires at: 1746419148298
+[debug] [2025-05-05T03:25:49.632Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/iglesia-inmaculada-concepcion [none]
+[debug] [2025-05-05T03:25:49.758Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/iglesia-inmaculada-concepcion 200
+[debug] [2025-05-05T03:25:49.758Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/iglesia-inmaculada-concepcion {"projectNumber":"675103275104","projectId":"iglesia-inmaculada-concepcion","lifecycleState":"ACTIVE","name":"Iglesia Inmaculada Concepcion","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-05-03T18:11:26.784984Z"}
+[info] 
+[info] === Serving from '/Volumes/DiscoMac/DevTools/proyectos/proyecto_angular/parroquia-inmaculada'...
+[info] 
+[debug] [2025-05-05T03:25:49.762Z] Checked if tokens are valid: true, expires at: 1746419148298
+[debug] [2025-05-05T03:25:49.762Z] Checked if tokens are valid: true, expires at: 1746419148298
+[debug] [2025-05-05T03:25:49.762Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/iglesia-inmaculada-concepcion/sites 
+[debug] [2025-05-05T03:25:50.385Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/iglesia-inmaculada-concepcion/sites 200
+[debug] [2025-05-05T03:25:50.385Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/iglesia-inmaculada-concepcion/sites {"sites":[{"name":"projects/iglesia-inmaculada-concepcion/sites/iglesia-inmaculada-concepcion","defaultUrl":"https://iglesia-inmaculada-concepcion.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2025-05-05T03:25:50.385Z] Checked if tokens are valid: true, expires at: 1746419148298
+[debug] [2025-05-05T03:25:50.385Z] Checked if tokens are valid: true, expires at: 1746419148298
+[debug] [2025-05-05T03:25:50.385Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/iglesia-inmaculada-concepcion/webApps/-/config [none]
+[debug] [2025-05-05T03:25:51.145Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/iglesia-inmaculada-concepcion/webApps/-/config 200
+[debug] [2025-05-05T03:25:51.145Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/iglesia-inmaculada-concepcion/webApps/-/config {"projectId":"iglesia-inmaculada-concepcion","storageBucket":"iglesia-inmaculada-concepcion.firebasestorage.app","apiKey":"AIzaSyB5jUm__Tm5P0c7W5nJhJsxlSgMGUTd3tg","authDomain":"iglesia-inmaculada-concepcion.firebaseapp.com","messagingSenderId":"675103275104"}
+[debug] [2025-05-05T03:25:51.243Z] Checked if tokens are valid: true, expires at: 1746419148298
+[debug] [2025-05-05T03:25:51.244Z] Checked if tokens are valid: true, expires at: 1746419148298
+[debug] [2025-05-05T03:25:51.244Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/iglesia-inmaculada-concepcion [none]
+[debug] [2025-05-05T03:25:51.674Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/iglesia-inmaculada-concepcion 200
+[debug] [2025-05-05T03:25:51.675Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/iglesia-inmaculada-concepcion {"projectId":"iglesia-inmaculada-concepcion","projectNumber":"675103275104","displayName":"Iglesia Inmaculada Concepcion","name":"projects/iglesia-inmaculada-concepcion","resources":{"hostingSite":"iglesia-inmaculada-concepcion"},"state":"ACTIVE","etag":"1_476b1778-fa8b-494d-883c-0c7cf46bbb07"}
+[info] i  hosting[iglesia-inmaculada-concepcion]: Serving hosting files from: dist/parroquia-inmaculada/browser {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdist/parroquia-inmaculada/browser\u001b[22m"}}
+[info] ✔  hosting[iglesia-inmaculada-concepcion]: Local server: http://localhost:5003 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5003\u001b[22m\u001b[24m"}}
+[info] i  hosting: ::1 - - [05/May/2025:03:26:14 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [05/May/2025:03:26:14 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [05/May/2025:03:26:14 +0000] "GET /chunk-FK6H3RFT.js HTTP/1.1" 200 272 "http://localhost:5003/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [05/May/2025:03:26:14 +0000] \"GET /chunk-FK6H3RFT.js HTTP/1.1\" 200 272 \"http://localhost:5003/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [05/May/2025:03:26:14 +0000] "GET /styles-JMJIODBN.css HTTP/1.1" 200 - "http://localhost:5003/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [05/May/2025:03:26:14 +0000] \"GET /styles-JMJIODBN.css HTTP/1.1\" 200 - \"http://localhost:5003/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [05/May/2025:03:26:15 +0000] "GET /chunk-TSRGIXR5.js HTTP/1.1" 200 - "http://localhost:5003/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [05/May/2025:03:26:15 +0000] \"GET /chunk-TSRGIXR5.js HTTP/1.1\" 200 - \"http://localhost:5003/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [05/May/2025:03:26:15 +0000] "GET /polyfills-FFHMD2TL.js HTTP/1.1" 200 - "http://localhost:5003/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [05/May/2025:03:26:15 +0000] \"GET /polyfills-FFHMD2TL.js HTTP/1.1\" 200 - \"http://localhost:5003/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [05/May/2025:03:26:15 +0000] "GET /main-2SQ6Q56G.js HTTP/1.1" 200 - "http://localhost:5003/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [05/May/2025:03:26:15 +0000] \"GET /main-2SQ6Q56G.js HTTP/1.1\" 200 - \"http://localhost:5003/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36\""}}
+[info] i  hosting: ::1 - - [05/May/2025:03:26:15 +0000] "GET /favicon.ico HTTP/1.1" 200 - "http://localhost:5003/dashboard" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"::1 - - [05/May/2025:03:26:15 +0000] \"GET /favicon.ico HTTP/1.1\" 200 - \"http://localhost:5003/dashboard\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36\""}}
