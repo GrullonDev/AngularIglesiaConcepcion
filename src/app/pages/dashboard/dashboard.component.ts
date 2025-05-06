@@ -69,7 +69,7 @@ export class DashboardComponent {
   }
 
   public lineChartData: ChartData<'line'> = {
-    labels: ['2000', '2005', '2010', '2015', '2020',],
+    labels: ['2000', '2005', '2010', '2015', '2020'],
     datasets: [
       { data: [25, 30, 10, 20, 15], label: 'Bautizos', fill: true, borderColor: '#42a5f5', backgroundColor: 'rgba(66,165,245,0.2)' },
       { data: [8, 15, 5, 7, 12], label: 'Comuniones', fill: true, borderColor: '#ffa726', backgroundColor: 'rgba(255,167,38,0.2)' },
