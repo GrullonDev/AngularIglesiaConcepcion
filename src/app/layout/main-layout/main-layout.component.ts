@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
 
+// Responsiveness
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+
 // Angular Material
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -35,6 +38,24 @@ import { appVersion } from '../../../../src/enviroments/version';
 })
 
 export class MainLayoutComponent {
+  @ViewChild('drawer') drawer!: MatSidenav;
+  isMobile = false;
+  isDesktop = false;
+  opened = true;
   version = appVersion;
-  opened = false;
+
+  constructor(private breakpointObserver: BreakpointObserver) {
+    this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Tablet])
+      .subscribe(result => {
+        this.isMobile = result.matches;
+        this.opened = !this.isMobile
+          || !this.isDesktop;
+      });
+  }
+
+  closeDrawer() {
+    if (this.isMobile && this.drawer.opened) {
+      this.drawer.close();
+    }
+  }
 }

@@ -1,16 +1,32 @@
 <mat-sidenav-container class="app-container">
-  <mat-sidenav #drawer mode="over" [(opened)]="opened">
+  <mat-sidenav #drawer [mode]="isMobile ? 'over' : 'side'" [(opened)]="opened">
     <mat-nav-list>
-      <a mat-list-item routerLink="/dashboard" routerLinkActive="active-link"
+      <a
+        mat-list-item
+        routerLink="/dashboard"
+        routerLinkActive="active-link"
+        (click)="closeDrawer()"
         >Panel de Inicio</a
       >
-      <a mat-list-item routerLink="/documentos" routerLinkActive="active-link"
+      <a
+        mat-list-item
+        routerLink="/documentos"
+        routerLinkActive="active-link"
+        (click)="closeDrawer()"
         >Documentos</a
       >
-      <a mat-list-item routerLink="/actividades" routerLinkActive="active-link"
+      <a
+        mat-list-item
+        routerLink="/actividades"
+        routerLinkActive="active-link"
+        (click)="closeDrawer()"
         >Actividades</a
       >
-      <a mat-list-item routerLink="/reportes" routerLinkActive="active-link"
+      <a
+        mat-list-item
+        routerLink="/reportes"
+        routerLinkActive="active-link"
+        (click)="closeDrawer()"
         >Reportes</a
       >
     </mat-nav-list>
