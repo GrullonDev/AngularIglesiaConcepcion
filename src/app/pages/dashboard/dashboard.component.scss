@@ -22,13 +22,14 @@
     overflow: hidden;
 
     img {
-        width: 2048%;
-        height: 2048px;
+        width: 100%;
+        height: auto;
+        max-height: 500px;
         object-fit: cover;
         object-position: center;
         border-radius: 4px;
         transition: transform 0.3s ease;
-
+    
         &:hover {
             transform: scale(1.02);
         }
