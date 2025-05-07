@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 // Angular Material
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -26,7 +26,8 @@ import { appVersion } from '../../../../src/enviroments/version';
     MatListModule,
     MatButtonModule,
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    RouterModule,
   ],
   // templateUrl: '../main-layout.component.html',
   templateUrl: '../main-layout/main-layout.component.html',
