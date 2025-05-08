@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartData, ChartOptions, registerables, Chart } from 'chart.js';
 import { DocumentScannerComponent } from '../../shared/document-scanner/document-scanner.component';
@@ -51,10 +52,10 @@ export class DashboardComponent {
   }
 
   crearDocumento() {
-    alert('Funcionalidad para crear documento nuevo');
+    this.router.navigate(['/crear-documento']);
   }
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private router: Router) {
     this.isMobileOrTablet = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
       .test(navigator.userAgent);
   }

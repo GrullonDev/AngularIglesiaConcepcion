@@ -1,0 +1,57 @@
+<form class="document-form" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre del niño</mat-label>
+    <input matInput [(ngModel)]="form.nombreNino" name="nombreNino" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nombres de padrinos</mat-label>
+    <input matInput [(ngModel)]="form.padrinos" name="padrinos" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Fechas de pláticas</mat-label>
+    <mat-date-range-input
+      [rangePicker]="rangePicker"
+      [(ngModel)]="form.rangoFechas"
+      name="rangoFechas"
+    >
+      <input matStartDate placeholder="Fecha de inicio" />
+      <input matEndDate placeholder="Fecha de finalización" />
+    </mat-date-range-input>
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="rangePicker"
+    ></mat-datepicker-toggle>
+    <mat-date-range-picker #rangePicker></mat-date-range-picker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre del sacerdote</mat-label>
+    <input matInput [(ngModel)]="form.sacerdote" name="sacerdote" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Parroquia</mat-label>
+    <input matInput [(ngModel)]="form.parroquia" name="parroquia" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Dirección</mat-label>
+    <input matInput [(ngModel)]="form.direccion" name="direccion" />
+  </mat-form-field>
+
+  <div class="firma-section">
+    <label>Firma del sacerdote</label>
+    <input type="file" (change)="onFirmaUpload($event)" />
+    <p>O firme directamente:</p>
+    <canvas #signaturePad class="signature-canvas"></canvas>
+    <button mat-button color="warn" (click)="clearSignature()">
+      Limpiar firma
+    </button>
+  </div>
+
+  <button mat-raised-button color="primary" type="submit">
+    Generar Constancia
+  </button>
+</form>
