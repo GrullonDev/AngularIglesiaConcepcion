@@ -5,23 +5,6 @@ import gql from 'graphql-tag';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-const LOGIN_MUTATION = gql`
-  mutation Login($correo: String!, $password: String!) {
-    login(correo: $correo, password: $password)
-  }
-`;
-
-const REGISTER_MUTATION = gql`
-  mutation Register($nombre: String!, $correo: String!, $password: String!) {
-    createUser(input: { nombre: $nombre, correo: $correo, password: $password }) {
-      id
-      nombre
-      correo
-      rol
-    }
-  }
-`;
-
 @Injectable({
   providedIn: 'root'
 })
@@ -44,9 +27,25 @@ export class AuthService {
   register(nombre: string, correo: string, password: string): Observable<any> {
     return this.apollo
       .mutate<any>({
-        mutation: REGISTER_MUTATION,
-        variables: { nombre, correo, password }
+        mutation: gql`
+          mutation Register($nombre: String!, $correo: String!, $password: String!) {
+            createUser(
+              input: {
+                nombre: $nombre
+                correo: $correo
+                password: $password
+                rol: VICE_CANCILLER
+              }
+            ) {
+              id
+              nombre
+              correo
+              rol
+            }
+          }
+        `,
+        variables: { nombre, correo, password },
       })
-      .pipe(map(result => result.data.createUser));
+      .pipe(map((result) => result.data.createUser));
   }
 }

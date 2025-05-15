@@ -26,6 +26,9 @@
     <button mat-raised-button color="primary" type="submit" class="full-width">
       Registrarse
     </button>
+    <div *ngIf="error" style="color: red; margin-top: 1rem">
+      {{ error }}
+    </div>
     <button mat-button routerLink="/login" class="full-width">
       ¿Ya tienes cuenta? Inicia sesión
     </button>

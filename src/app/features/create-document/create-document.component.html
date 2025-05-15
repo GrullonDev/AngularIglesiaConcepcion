@@ -11,13 +11,19 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Fechas de pláticas</mat-label>
-    <mat-date-range-input
-      [rangePicker]="rangePicker"
-      [(ngModel)]="form.rangoFechas"
-      name="rangoFechas"
-    >
-      <input matStartDate placeholder="Fecha de inicio" />
-      <input matEndDate placeholder="Fecha de finalización" />
+    <mat-date-range-input [rangePicker]="rangePicker">
+      <input
+        matStartDate
+        [(ngModel)]="fechaInicio"
+        name="fechaInicio"
+        placeholder="Fecha de inicio"
+      />
+      <input
+        matEndDate
+        [(ngModel)]="fechaFin"
+        name="fechaFin"
+        placeholder="Fecha de finalización"
+      />
     </mat-date-range-input>
     <mat-datepicker-toggle
       matSuffix
@@ -43,12 +49,12 @@
 
   <div class="firma-section">
     <label>Firma del sacerdote</label>
-    <input type="file" (change)="onFirmaUpload($event)" />
+    <!-- <input type="file" (change)="onFirmaUpload($event)" />
     <p>O firme directamente:</p>
     <canvas #signaturePad class="signature-canvas"></canvas>
     <button mat-button color="warn" (click)="clearSignature()">
       Limpiar firma
-    </button>
+    </button> -->
   </div>
 
   <button mat-raised-button color="primary" type="submit">

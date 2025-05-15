@@ -9,6 +9,7 @@ import { GraphQLModule } from './graphql/graphql.module';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    importProvidersFrom(GraphQLModule), // Importa el módulo configurado
     provideRouter(routes),
     provideHttpClient(),
     provideApollo(() => {

@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDateRangeInput, MatDateRangePicker } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ClienteService } from './services/cliente.service';
+import { start } from 'repl';
 
 @Component({
   selector: 'app-create-document',
@@ -27,34 +29,45 @@ import { MatNativeDateModule } from '@angular/material/core';
 })
 
 export class CreateDocumentComponent {
-  @ViewChild('signaturePad', { static: false }) signaturePad!: ElementRef<HTMLCanvasElement>;
   form = {
     nombreNino: '',
     padrinos: '',
-    rangoFechas: {
-      start: null as Date | null,
-      end: null as Date | null
-    },
     sacerdote: '',
     parroquia: '',
     direccion: '',
     firma: ''
   };
 
-  onFirmaUpload(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      // Leer la imagen como base64
-    }
-  }
+  fechaInicio: Date | null = null;
+  fechaFin: Date | null = null;
 
-  clearSignature() {
-    const ctx = this.signaturePad.nativeElement.getContext('2d');
-    if (ctx) ctx.clearRect(0, 0, this.signaturePad.nativeElement.width, this.signaturePad.nativeElement.height);
-  }
+  constructor(private clienteService: ClienteService) { }
 
   onSubmit() {
-    // Aquí podrías guardar en Firebase, enviar al backend o generar un PDF
-    console.log(this.form);
+    if (!this.fechaInicio || !this.fechaFin) {
+      alert('Por favor selecciona el rango de fechas');
+      return;
+    }
+
+    const payload = {
+      cui: crypto.randomUUID(),
+      nombre: this.form.nombreNino,
+      padrinos: this.form.padrinos,
+      fecha: `${this.fechaInicio.toISOString().split('T')[0]} al ${this.fechaFin.toISOString().split('T')[0]}`,
+      sacerdote: this.form.sacerdote,
+      parroquia: this.form.parroquia,
+      direccion: this.form.direccion,
+      firma: this.form.firma || 'sin_firma',
+    };
+
+    this.clienteService.crearCliente(payload).subscribe({
+      next: (res) => {
+        alert('Constancia creada con éxito ✅');
+      },
+      error: (err) => {
+        console.error('Error en GraphQL:', err);
+        alert('Ocurrió un error al crear el documento');
+      }
+    });
   }
 }

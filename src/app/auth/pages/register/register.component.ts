@@ -37,8 +37,9 @@ export class RegisterComponent {
             next: () => {
                 this.router.navigate(['/login']);
             },
-            error: () => {
-                this.error = 'Error al registrar el usuario.';
+            error: (err) => {
+                console.error('Error al registrar:', err);
+                this.error = err.message || 'Error al registrar el usuario.';
             }
         });
     }
