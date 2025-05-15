@@ -42,7 +42,7 @@ export class LoginComponent {
     onLogin() {
         this.authService.login(this.email, this.password).subscribe({
             next: token => {
-                localStorage.setItem('token', token);
+                localStorage.setItem('access_token', token); // ✅ debe coincidir con authLink
                 this.router.navigate(['/dashboard']);
             },
             error: () => {

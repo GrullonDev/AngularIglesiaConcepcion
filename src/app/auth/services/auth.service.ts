@@ -21,7 +21,12 @@ export class AuthService {
         `,
         variables: { correo: email, password },
       })
-      .pipe(map((result: any) => result.data.login));
+      .pipe(
+        map((result: any) => {
+          console.log('[LOGIN RESULT]', result);  // 👈 verifica esto
+          return result.data.login;
+        })
+      )
   }
 
   register(nombre: string, correo: string, password: string): Observable<any> {
