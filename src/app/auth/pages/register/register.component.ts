@@ -26,14 +26,14 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegisterComponent {
     nombre = '';
-    correo = '';
+    email = '';
     password = '';
     error = '';
 
     constructor(private authService: AuthService, private router: Router) { }
 
     onRegister() {
-        this.authService.register(this.nombre, this.correo, this.password).subscribe({
+        this.authService.register(this.nombre, this.email, this.password).subscribe({
             next: () => {
                 this.router.navigate(['/login']);
             },

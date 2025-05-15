@@ -25,14 +25,14 @@ import { AuthService } from '../../services/auth.service';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-    correo = '';
+    email = '';
     password = '';
     error = '';
 
     constructor(private authService: AuthService, private router: Router) { }
 
     onLogin() {
-        this.authService.login(this.correo, this.password).subscribe({
+        this.authService.login(this.email, this.password).subscribe({
             next: token => {
                 localStorage.setItem('token', token);
                 this.router.navigate(['/dashboard']);

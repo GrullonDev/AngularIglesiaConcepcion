@@ -1,7 +1,7 @@
-// login.component.html
+<!-- login.component.html -->
 <mat-card class="auth-card">
   <h2>Iniciar Sesión</h2>
-  <form (ngSubmit)="login()">
+  <form (ngSubmit)="onLogin()">
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Email</mat-label>
       <input matInput type="email" [(ngModel)]="email" name="email" required />

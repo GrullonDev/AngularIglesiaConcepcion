@@ -7,14 +7,33 @@ import { CreateDocumentComponent } from './features/create-document/create-docum
 import { LoginComponent } from './auth/pages/login/login.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { authGuard } from './auth/guards/auth.guard';
+import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
+import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
-    { path: 'reportes', component: ReportesComponent, canActivate: [authGuard] },
-    { path: 'documentos', component: DocumentsComponent, canActivate: [authGuard] },
-    { path: 'actividades', component: ActivitiesComponent, canActivate: [authGuard] },
-    { path: 'crear-documento', component: CreateDocumentComponent, canActivate: [authGuard] },
+    {
+        path: '',
+        component: MainLayoutComponent,
+        canActivateChild: [authGuard],
+        children: [
+            { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+            { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
+            { path: 'reportes', component: ReportesComponent, canActivate: [authGuard] },
+            { path: 'documentos', component: DocumentsComponent, canActivate: [authGuard] },
+            { path: 'actividades', component: ActivitiesComponent, canActivate: [authGuard] },
+            { path: 'crear-documento', component: CreateDocumentComponent, canActivate: [authGuard] },
+        ],
+    },
+    {
+        path: '',
+        component: AuthLayoutComponent,
+        children: [
+            { path: 'login', component: LoginComponent },
+            { path: 'register', component: RegisterComponent },
+        ],
+    },
+    {
+        path: '**',
+        redirectTo: 'login',
+    }
 ];

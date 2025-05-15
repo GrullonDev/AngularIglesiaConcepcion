@@ -1,7 +1,7 @@
-// register.component.html
+<!-- register.component.html -->
 <mat-card class="auth-card">
   <h2>Crear Cuenta</h2>
-  <form (ngSubmit)="register()">
+  <form (ngSubmit)="onRegister()">
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Nombre Completo</mat-label>
       <input matInput [(ngModel)]="nombre" name="nombre" required />
