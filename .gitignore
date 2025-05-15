@@ -28,6 +28,13 @@ yarn-error.log
 !.vscode/extensions.json
 .history/*
 
+# Angular specific
+.angular/
+.editorconfig
+
+# Firebase
+.firebase/
+
 # Miscellaneous
 /.angular/cache
 .sass-cache/

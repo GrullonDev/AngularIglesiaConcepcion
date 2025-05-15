@@ -1,0 +1,33 @@
+// register.component.html
+<mat-card class="auth-card">
+  <h2>Crear Cuenta</h2>
+  <form (ngSubmit)="register()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nombre Completo</mat-label>
+      <input matInput [(ngModel)]="nombre" name="nombre" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Correo Electrónico</mat-label>
+      <input matInput type="email" [(ngModel)]="email" name="email" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Contraseña</mat-label>
+      <input
+        matInput
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="full-width">
+      Registrarse
+    </button>
+    <button mat-button routerLink="/login" class="full-width">
+      ¿Ya tienes cuenta? Inicia sesión
+    </button>
+  </form>
+</mat-card>

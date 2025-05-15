@@ -4,3 +4,5 @@ import { appConfig } from './app/app.config';
 
 bootstrapApplication(AppComponent, appConfig)
   .catch(err => console.error(err));
+
+// http://192.168.40.7:3000/graphql
