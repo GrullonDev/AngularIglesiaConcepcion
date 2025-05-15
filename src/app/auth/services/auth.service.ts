@@ -23,26 +23,30 @@ const REGISTER_MUTATION = gql`
 `;
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class AuthService {
-    constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo) { }
 
-    login(correo: string, password: string): Observable<string> {
-        return this.apollo
-            .mutate<any>({
-                mutation: LOGIN_MUTATION,
-                variables: { correo, password }
-            })
-            .pipe(map(result => result.data.login));
-    }
+  login(email: string, password: string) {
+    return this.apollo
+      .mutate({
+        mutation: gql`
+          mutation Login($correo: String!, $password: String!) {
+            login(correo: $correo, password: $password)
+          }
+        `,
+        variables: { correo: email, password },
+      })
+      .pipe(map((result: any) => result.data.login));
+  }
 
-    register(nombre: string, correo: string, password: string): Observable<any> {
-        return this.apollo
-            .mutate<any>({
-                mutation: REGISTER_MUTATION,
-                variables: { nombre, correo, password }
-            })
-            .pipe(map(result => result.data.createUser));
-    }
+  register(nombre: string, correo: string, password: string): Observable<any> {
+    return this.apollo
+      .mutate<any>({
+        mutation: REGISTER_MUTATION,
+        variables: { nombre, correo, password }
+      })
+      .pipe(map(result => result.data.createUser));
+  }
 }
