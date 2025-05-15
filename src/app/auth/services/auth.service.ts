@@ -34,7 +34,7 @@ export class AuthService {
                 nombre: $nombre
                 correo: $correo
                 password: $password
-                rol: VICE_CANCILLER
+                rol: PARROCO
               }
             ) {
               id
