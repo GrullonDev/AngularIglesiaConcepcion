@@ -37,6 +37,20 @@ src/enviroments/version.ts
 
 # Firebase
 .firebase/
+firebase-debug.log
+.firebaserc
+firebase.json
+
+# Firebase Functions
+functions/node_modules/
+functions/.env
+functions/lib/
+functions/logs/
+functions/.runtimeconfig.json
+
+# Firebase Hosting Cache
+.firebase/hosting.*
+.firebase/hosting.cache
 
 # Miscellaneous
 /.angular/cache
