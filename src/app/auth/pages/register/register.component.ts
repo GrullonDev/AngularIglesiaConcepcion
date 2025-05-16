@@ -29,18 +29,32 @@ export class RegisterComponent {
     email = '';
     password = '';
     error = '';
+    nombreError = false;
+    emailError = false;
+    passwordError = false;
+    hidePassword = true;
 
     constructor(private authService: AuthService, private router: Router) { }
 
     onRegister() {
-        this.authService.register(this.nombre, this.email, this.password).subscribe({
-            next: () => {
-                this.router.navigate(['/login']);
-            },
-            error: (err) => {
-                console.error('Error al registrar:', err);
-                this.error = err.message || 'Error al registrar el usuario.';
-            }
-        });
+        this.nombreError = this.nombre.trim() === '';
+        this.emailError = !this.email || !this.email.includes('@');
+        this.passwordError = !this.password;
+
+        if (this.nombreError || this.emailError || this.passwordError) {
+            return;
+        }
+
+        this.authService
+            .register(this.nombre, this.email, this.password)
+            .subscribe({
+                next: () => {
+                    this.router.navigate(['/login']);
+                },
+                error: (err) => {
+                    console.error('Error al registrar:', err);
+                    this.error = err.message || 'Error al registrar el usuario.';
+                },
+            });
     }
 }

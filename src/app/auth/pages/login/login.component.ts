@@ -69,4 +69,10 @@ export class LoginComponent {
             }
         });
     }
+
+    navigateToRegister() {
+        this.router.navigate(['/register']).catch(err => {
+            console.error('Navigation failed:', err);
+        });
+    }
 }
