@@ -1,18 +1,22 @@
 {
   "name": "parroquia-inmaculada",
   "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "ts-node": {
+    "esm": true
+  },
   "scripts": {
     "ng": "ng",
-    "prebuild": "ts-node scripts/set-version.ts",
+    "prebuild": "ts-node --project tsconfig.scripts.json scripts/set-version.ts",
     "build:prod": "ng build --configuration production",
-    "build": "ng build --configuration production",
+    "build": "ng build",
     "deploy": "npm run build && firebase deploy",
     "start": "ng serve",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:parroquia-inmaculada": "node dist/parroquia-inmaculada/server/server.mjs"
   },
-  "private": true,
   "dependencies": {
     "@angular/cdk": "^19.2.14",
     "@angular/common": "^19.2.0",

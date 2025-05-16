@@ -11,6 +11,9 @@
 npm-debug.log
 yarn-error.log
 
+# Ignorar archivo generado automáticamente
+src/enviroments/version.ts
+
 # IDEs and editors
 .idea/
 .project

@@ -1,9 +1,11 @@
+// scripts/set-version.ts
 import { writeFileSync } from 'fs';
 import { join } from 'path';
-import { version } from '../package.json';
 
-const versionFilePath = join(__dirname, '../src/environments/version.ts');
+const version = require('../package.json').version;
+const versionFilePath = join(__dirname, '../src/enviroments/version.ts');
+
 const content = `export const appVersion = '${version}';\n`;
 
 writeFileSync(versionFilePath, content);
-console.log(`✅ Versión ${version} escrita en version.ts`);
+console.log(`✅ Versión actual (${version}) guardada en version.ts`);
