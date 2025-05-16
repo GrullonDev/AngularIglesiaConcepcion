@@ -1,58 +1,271 @@
-.resumen-container {
+// .resumen-container {
+//     display: flex;
+//     gap: 1rem;
+//     margin-bottom: 2rem;
+//     flex-wrap: wrap;
+// }
+
+// .resumen-card {
+//     flex: 1 1 200px;
+//     text-align: center;
+//     background-color: #f0f4f8;
+// }
+
+// .imagen-container {
+//     padding: 1.5rem;
+//     background: #ffffff;
+//     border-radius: 8px;
+//     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+//     width: 100%;
+//     max-width: 800px;
+//     margin: 0 auto;
+//     overflow: hidden;
+
+//     img {
+//         width: 100%;
+//         height: auto;
+//         max-height: 500px;
+//         object-fit: cover;
+//         object-position: center;
+//         border-radius: 4px;
+//         transition: transform 0.3s ease;
+    
+//         &:hover {
+//             transform: scale(1.02);
+//         }
+//     }
+// }
+
+// .grafico-container {
+//     padding: 1rem;
+//     background: #ffffff;
+//     border-radius: 8px;
+//     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+// }
+
+// .acciones-botones {
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: center;
+//     gap: 1rem;
+//     margin-top: 2rem;
+
+//     button {
+//         display: flex;
+//         align-items: center;
+//         gap: 0.5rem;
+//     }
+// }
+
+/* Dashboard Container */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #f5f6fa;
+    /* Light Marian-inspired background */
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    margin-bottom: 32px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4，这一页px 16px rgba(0, 0, 0, 0.1);
+}
+
+.hero-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.8);
+    transition: transform 0.5s ease;
+}
+
+.hero-image:hover {
+    transform: scale(1.03);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(30, 58, 138, 0.6), rgba(59, 130, 246, 0.4));
     display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    text-align: center;
+    padding: 16px;
+}
+
+.hero-title {
+    font-family: 'Lora', serif;
+    font-size: 2.2rem;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.hero-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 8px 0 0;
+    opacity: 0.9;
+}
+
+/* Summary Cards */
+.resumen-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
 }
 
 .resumen-card {
-    flex: 1 1 200px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     text-align: center;
-    background-color: #f0f4f8;
+    padding: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.imagen-container {
-    padding: 1.5rem;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    overflow: hidden;
-
-    img {
-        width: 100%;
-        height: auto;
-        max-height: 500px;
-        object-fit: cover;
-        object-position: center;
-        border-radius: 4px;
-        transition: transform 0.3s ease;
-    
-        &:hover {
-            transform: scale(1.02);
-        }
-    }
+.resumen-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
-.grafico-container {
-    padding: 1rem;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.resumen-card mat-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding-bottom: 8px;
+}
+
+.card-icon {
+    color: #1e3a8a;
+    /* Marian blue */
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+
+mat-card-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #333;
+}
+
+mat-card-content {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-top: 8px;
+}
+
+/* Action Buttons */
+.acciones-container {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.acciones-title {
+    font-family: 'Lora', serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #1e3a8a;
+    margin-bottom: 16px;
 }
 
 .acciones-botones {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 16px;
+}
 
-    button {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+.acciones-botones button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.acciones-botones button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 16px;
+    }
+
+    .hero-image {
+        height: 200px;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .resumen-container {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+    }
+
+    .acciones-botones {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-image {
+        height: 150px;
+    }
+
+    .hero-title {
+        font-size: 1.4rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .resumen-card {
+        padding: 12px;
+    }
+
+    mat-card-title {
+        font-size: 1rem;
+    }
+
+    mat-card-content {
+        font-size: 1.5rem;
+    }
+
+    .acciones-botones button {
+        padding: 10px 16px;
+        font-size: 0.9rem;
     }
 }

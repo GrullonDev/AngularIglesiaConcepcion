@@ -1,4 +1,4 @@
-<div class="resumen-container">
+<!-- <div class="resumen-container">
   <mat-card class="resumen-card">
     <mat-card-title>Bautizos</mat-card-title>
     <mat-card-content>{{ resumen.bautizos }}</mat-card-content>
@@ -54,4 +54,85 @@
   </button>
 </div>
 
-<app-document-scanner *ngIf="mostrarEscaner"></app-document-scanner>
+<app-document-scanner *ngIf="mostrarEscaner"></app-document-scanner> -->
+
+<div class="dashboard-container">
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <img
+      src="assets/parroquia.jpeg"
+      alt="Parroquia Inmaculada Concepción"
+      class="hero-image"
+    />
+    <div class="hero-overlay">
+      <h1 class="hero-title">Bienvenidos a Parroquia Inmaculada Concepción</h1>
+      <p class="hero-subtitle">Administración Pastoral y Comunitaria</p>
+    </div>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="resumen-container">
+    <mat-card class="resumen-card">
+      <mat-card-header>
+        <mat-icon class="card-icon">child_care</mat-icon>
+        <mat-card-title>Bautizos</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>{{ resumen.bautizos }}</mat-card-content>
+    </mat-card>
+
+    <mat-card class="resumen-card">
+      <mat-card-header>
+        <mat-icon class="card-icon">local_florist</mat-icon>
+        <mat-card-title>Comuniones</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>{{ resumen.comuniones }}</mat-card-content>
+    </mat-card>
+
+    <mat-card class="resumen-card">
+      <mat-card-header>
+        <mat-icon class="card-icon">favorite</mat-icon>
+        <mat-card-title>Confirmaciones</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>{{ resumen.confirmaciones }}</mat-card-content>
+    </mat-card>
+
+    <mat-card class="resumen-card">
+      <mat-card-header>
+        <mat-icon class="card-icon">ring</mat-icon>
+        <mat-card-title>Matrimonios</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>{{ resumen.matrimonios }}</mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="acciones-container">
+    <h2 class="acciones-title">Acciones Rápidas</h2>
+    <div class="acciones-botones">
+      <button mat-raised-button color="primary" (click)="agregarDocumento()">
+        <mat-icon>upload_file</mat-icon>
+        Agregar Documento
+      </button>
+      <button mat-raised-button color="accent" (click)="agendarActividad()">
+        <mat-icon>event</mat-icon>
+        Agendar Actividad
+      </button>
+      <button mat-raised-button color="warn" (click)="crearDocumento()">
+        <mat-icon>description</mat-icon>
+        Crear Documento
+      </button>
+      <button
+        *ngIf="isMobileOrTablet"
+        mat-raised-button
+        color="primary"
+        (click)="escanearDocumento()"
+      >
+        <mat-icon>photo_camera</mat-icon>
+        Escanear Documento
+      </button>
+    </div>
+  </div>
+
+  <!-- Document Scanner -->
+  <app-document-scanner *ngIf="mostrarEscaner"></app-document-scanner>
+</div>
