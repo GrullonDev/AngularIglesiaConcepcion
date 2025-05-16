@@ -1,22 +1,71 @@
-<mat-card>
+<mat-card class="document-table-card">
   <h2>Listado de Documentos</h2>
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!-- Contenedor de búsqueda -->
+  <mat-form-field class="search-bar" appearance="outline">
+    <mat-label>Buscar</mat-label>
+    <input
+      matInput
+      #filterInput
+      (keyup)="applyFilter(filterInput.value)"
+      placeholder="Buscar por nombre, tipo o sacerdote"
+    />
+  </mat-form-field>
+
+  <!-- Tabla con ordenamiento y datos -->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+    <!-- Tipo -->
     <ng-container matColumnDef="tipo">
-      <th mat-header-cell *matHeaderCellDef>Tipo</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
       <td mat-cell *matCellDef="let element">{{ element.tipo }}</td>
     </ng-container>
 
+    <!-- CUI -->
+    <ng-container matColumnDef="cui">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>CUI</th>
+      <td mat-cell *matCellDef="let element">{{ element.cui }}</td>
+    </ng-container>
+
+    <!-- Nombre del niño -->
     <ng-container matColumnDef="nombre">
-      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre del Niño</th>
       <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
     </ng-container>
 
+    <!-- Parroquia -->
+    <ng-container matColumnDef="parroquia">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Parroquia</th>
+      <td mat-cell *matCellDef="let element">{{ element.parroquia }}</td>
+    </ng-container>
+
+    <!-- Sacerdote -->
+    <ng-container matColumnDef="sacerdote">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Sacerdote</th>
+      <td mat-cell *matCellDef="let element">{{ element.sacerdote }}</td>
+    </ng-container>
+
+    <!-- Fecha de Creación -->
     <ng-container matColumnDef="fecha">
-      <th mat-header-cell *matHeaderCellDef>Fecha</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
       <td mat-cell *matCellDef="let element">{{ element.fecha }}</td>
+    </ng-container>
+
+    <!-- Firmado -->
+    <ng-container matColumnDef="firma">
+      <th mat-header-cell *matHeaderCellDef>Firma</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.firma === "sin_firma" ? "No" : "Sí" }}
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+
+  <!-- Paginador -->
+  <mat-paginator
+    [pageSize]="10"
+    [pageSizeOptions]="[10, 20, 50]"
+    showFirstLastButtons
+  ></mat-paginator>
 </mat-card>
