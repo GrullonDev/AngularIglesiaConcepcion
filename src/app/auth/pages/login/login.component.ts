@@ -17,7 +17,6 @@ import { LoginErrorDialogComponent } from './login-error-dialog.component';
     imports: [
         CommonModule,
         FormsModule,
-        RouterModule,
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
@@ -32,6 +31,9 @@ import { LoginErrorDialogComponent } from './login-error-dialog.component';
 export class LoginComponent {
     email = '';
     password = '';
+    emailError = false;
+    hidePassword = true;
+    passwordError = false;
 
     constructor(
         private authService: AuthService,
@@ -40,6 +42,13 @@ export class LoginComponent {
     ) { }
 
     onLogin() {
+        this.emailError = !this.email || !this.email.includes('@');
+        this.passwordError = !this.password;
+
+        if (this.emailError || this.passwordError) {
+            return;
+        }
+
         this.authService.login(this.email, this.password).subscribe({
             next: token => {
                 if (!token) {
