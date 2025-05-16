@@ -42,8 +42,18 @@ export class LoginComponent {
     onLogin() {
         this.authService.login(this.email, this.password).subscribe({
             next: token => {
-                localStorage.setItem('access_token', token); // ✅ debe coincidir con authLink
-                this.router.navigate(['/dashboard']);
+                if (!token) {
+                    console.error('Token inválido o vacío');
+                    this.dialog.open(LoginErrorDialogComponent);
+                    return;
+                }
+
+                console.log('Token guardado:', token);
+                localStorage.setItem('access_token', token);
+
+                this.router.navigate(['/dashboard']).then(success => {
+                    console.log('Navegación al dashboard:', success);
+                });
             },
             error: () => {
                 this.dialog.open(LoginErrorDialogComponent); // ← Mostramos diálogo de error

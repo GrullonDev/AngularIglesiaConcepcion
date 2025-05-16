@@ -24,7 +24,7 @@ export class AuthService {
       .pipe(
         map((result: any) => {
           console.log('[LOGIN RESULT]', result);  // 👈 verifica esto
-          return result.data.login;
+          return result?.data?.login ?? null;
         })
       )
   }
