@@ -1,4 +1,139 @@
 <mat-sidenav-container class="app-container">
+  <!-- Drawer -->
+  <mat-sidenav
+    #drawer
+    [mode]="isMobile ? 'over' : 'side'"
+    [(opened)]="opened"
+    class="drawer-sidenav"
+  >
+    <div class="drawer-header">
+      <img
+        src="assets/parroquia.jpeg"
+        alt="Parroquia Inmaculada Concepción"
+        class="drawer-logo"
+      />
+      <span class="drawer-title">Inmaculada Concepción</span>
+    </div>
+    <mat-nav-list class="nav-list">
+      <a
+        mat-list-item
+        routerLink="/dashboard"
+        routerLinkActive="active-link"
+        (click)="closeDrawer()"
+      >
+        <mat-icon class="nav-icon">dashboard</mat-icon>
+        Panel de Inicio
+      </a>
+      <a
+        mat-list-item
+        routerLink="/documentos"
+        routerLinkActive="active-link"
+        (click)="closeDrawer()"
+      >
+        <mat-icon class="nav-icon">description</mat-icon>
+        Documentos
+      </a>
+      <a
+        mat-list-item
+        routerLink="/actividades"
+        routerLinkActive="active-link"
+        (click)="closeDrawer()"
+      >
+        <mat-icon class="nav-icon">event</mat-icon>
+        Actividades
+      </a>
+      <a
+        mat-list-item
+        routerLink="/reportes"
+        routerLinkActive="active-link"
+        (click)="closeDrawer()"
+      >
+        <mat-icon class="nav-icon">assessment</mat-icon>
+        Reportes
+      </a>
+    </mat-nav-list>
+    <div class="version-footer">Versión {{ version }}</div>
+  </mat-sidenav>
+
+  <!-- Main Content -->
+  <mat-sidenav-content class="app-content">
+    <!-- Header -->
+    <mat-toolbar class="app-toolbar">
+      <!-- Menu Toggle Button (Mobile) -->
+      <button mat-icon-button (click)="drawer.toggle()" class="menu-toggle">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+      <!-- Logo and Title -->
+      <div class="header-branding">
+        <img
+          src="assets/parroquia.jpeg"
+          alt="Parroquia Inmaculada Concepción"
+          class="logo"
+        />
+        <span class="title">Parroquia Inmaculada Concepción</span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="desktop-nav" *ngIf="!isMobile">
+        <a
+          mat-button
+          routerLink="/dashboard"
+          routerLinkActive="active-link"
+          class="nav-link"
+        >
+          <mat-icon class="nav-icon">dashboard</mat-icon>
+          Inicio
+        </a>
+        <a
+          mat-button
+          routerLink="/documentos"
+          routerLinkActive="active-link"
+          class="nav-link"
+        >
+          <mat-icon class="nav-icon">description</mat-icon>
+          Documentos
+        </a>
+        <a
+          mat-button
+          routerLink="/actividades"
+          routerLinkActive="active-link"
+          class="nav-link"
+        >
+          <mat-icon class="nav-icon">event</mat-icon>
+          Actividades
+        </a>
+        <a
+          mat-button
+          routerLink="/reportes"
+          routerLinkActive="active-link"
+          class="nav-link"
+        >
+          <mat-icon class="nav-icon">assessment</mat-icon>
+          Reportes
+        </a>
+      </div>
+
+      <span class="spacer"></span>
+
+      <!-- Logout Button -->
+      <button
+        mat-icon-button
+        matTooltip="Cerrar sesión"
+        class="logout-button"
+        (click)="logout()"
+      >
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- <mat-sidenav-container class="app-container">
   <mat-sidenav #drawer [mode]="isMobile ? 'over' : 'side'" [(opened)]="opened">
     <mat-nav-list>
       <a
@@ -38,14 +173,22 @@
     <mat-toolbar color="primary" class="app-toolbar">
       <button mat-icon-button (click)="drawer.toggle()">
         <mat-icon>menu</mat-icon>
-      </button>
-      <span class="toolbar-title">Parroquia Inmaculada Concepción</span>
-      <span class="spacer"></span>
-      <button mat-icon-button>
-        <mat-icon>notifications</mat-icon>
-      </button>
-      <button mat-icon-button>
-        <mat-icon>account_circle</mat-icon>
+      </button> -->
+
+<!-- Logo o ícono -->
+<!-- <img
+        src="assets/parroquia.jpeg"
+        alt="Parroquia Inmaculada Concepción"
+        class="logo"
+      /> -->
+
+<!-- Título -->
+<!-- <span class="title">Parroquia Inmaculada Concepción</span>
+      <span class="spacer"></span> -->
+
+<!-- Botón: Cerrar sesión -->
+<!-- <button mat-icon-button matTooltip="Cerrar sesión" (click)="logout()">
+        <mat-icon>logout</mat-icon>
       </button>
     </mat-toolbar>
 
@@ -53,4 +196,4 @@
       <router-outlet></router-outlet>
     </main>
   </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->

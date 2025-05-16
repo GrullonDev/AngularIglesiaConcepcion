@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { Router, RouterModule, RouterOutlet } from '@angular/router';
 
 // Responsiveness
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
@@ -14,7 +14,6 @@ import { MatButtonModule } from '@angular/material/button';
 
 // Tus propios componentes
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { HeaderComponent } from '../header/header.component';
 import { appVersion } from '../../../../src/enviroments/version';
 
 @Component({
@@ -29,7 +28,6 @@ import { appVersion } from '../../../../src/enviroments/version';
     MatListModule,
     MatButtonModule,
     SidebarComponent,
-    HeaderComponent,
     RouterModule,
   ],
   // templateUrl: '../main-layout.component.html',
@@ -44,7 +42,7 @@ export class MainLayoutComponent {
   opened = true;
   version = appVersion;
 
-  constructor(private breakpointObserver: BreakpointObserver) {
+  constructor(private breakpointObserver: BreakpointObserver, private router: Router) {
     this.breakpointObserver.observe([Breakpoints.Handset, Breakpoints.Tablet])
       .subscribe(result => {
         this.isMobile = result.matches;
@@ -57,5 +55,11 @@ export class MainLayoutComponent {
     if (this.isMobile && this.drawer.opened) {
       this.drawer.close();
     }
+  }
+
+  logout() {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
   }
 }
