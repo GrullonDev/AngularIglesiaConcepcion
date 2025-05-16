@@ -1,0 +1,271 @@
+/* // register.component.scss
+.auth-card {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.full-width {
+    width: 100%;
+    margin-bottom: 1rem;
+} */
+
+/* Register Container */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    padding: 16px;
+    overflow: hidden;
+}
+
+/* Hero Background */
+.hero-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: blur(8px) brightness(0.5);
+    transition: transform 0.5s ease;
+}
+
+.hero-image:hover {
+    transform: scale(1.02);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(30, 58, 138, 0.7), rgba(59, 130, 246, 0.5));
+}
+
+/* Auth Card */
+.auth-card {
+    max-width: 420px;
+    width: 100%;
+    padding: 32px;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.auth-card:hover {
+    transform: translateY(-4px);
+}
+
+/* Card Header */
+.card-header {
+    margin-bottom: 24px;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.card-title {
+    font-family: 'Lora', serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #1e3a8a;
+    margin: 0;
+}
+
+.card-subtitle {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #666;
+    margin: 8px 0 0;
+}
+
+/* Form Styling */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+mat-form-field {
+    font-family: 'Roboto', sans-serif;
+}
+
+mat-error {
+    font-size: 0.85rem;
+    color: #d32f2f;
+}
+
+/* Password Toggle Button */
+mat-form-field button[mat-button] {
+    font-size: 0.9rem;
+    color: #1e3a8a;
+    padding: 0 8px;
+    line-height: normal;
+}
+
+mat-form-field button[mat-button]:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+/* Register Button */
+.register-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 6px;
+    background-color: #1e3a8a;
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.register-button:hover {
+    background-color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+.register-button[disabled] {
+    background-color: #b0bec5;
+    cursor: not-allowed;
+}
+
+/* Error Message */
+.error-message {
+    margin-top: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
+    color: #d32f2f;
+    text-align: center;
+}
+
+/* Login Link Container */
+.login-link {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+/* Login Button */
+.login-button {
+    padding: 8px 16px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 6px;
+    background-color: #3b82f6;
+    color: #ffffff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-button:hover {
+    background-color: #1e3a8a;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auth-card {
+        max-width: 360px;
+        padding: 24px;
+    }
+
+    .card-title {
+        font-size: 1.6rem;
+    }
+
+    .card-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .logo {
+        width: 64px;
+        height: 64px;
+    }
+
+    .hero-image {
+        height: 100vh;
+    }
+
+    .register-button {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    .login-button {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        max-width: 300px;
+        padding: 16px;
+    }
+
+    .card-title {
+        font-size: 1.4rem;
+    }
+
+    .card-subtitle {
+        font-size: 1rem;
+    }
+
+    .logo {
+        width: 56px;
+        height: 56px;
+    }
+
+    .register-button {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+
+    .login-link {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .login-button {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+}

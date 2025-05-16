@@ -1,0 +1,143 @@
+<!-- register.component.html -->
+<!-- <mat-card class="auth-card">
+  <h2>Crear Cuenta</h2>
+  <form (ngSubmit)="onRegister()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Nombre Completo</mat-label>
+      <input matInput [(ngModel)]="nombre" name="nombre" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Correo Electrónico</mat-label>
+      <input matInput type="email" [(ngModel)]="email" name="email" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Contraseña</mat-label>
+      <input
+        matInput
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="full-width">
+      Registrarse
+    </button>
+    <div *ngIf="error" style="color: red; margin-top: 1rem">
+      {{ error }}
+    </div>
+    <button mat-button routerLink="/login" class="full-width">
+      ¿Ya tienes cuenta? Inicia sesión
+    </button>
+  </form>
+</mat-card>
+ -->
+
+<div class="register-container">
+  <!-- Hero Background -->
+  <div class="hero-background">
+    <img
+      src="assets/parroquia.jpeg"
+      alt="Parroquia Inmaculada Concepción"
+      class="hero-image"
+    />
+    <div class="hero-overlay"></div>
+  </div>
+
+  <!-- Register Card -->
+  <mat-card class="auth-card">
+    <div class="card-header">
+      <img
+        src="assets/parroquia.jpeg"
+        alt="Parroquia Inmaculada Concepción"
+        class="logo"
+      />
+      <h1 class="card-title">Parroquia Inmaculada Concepción</h1>
+      <p class="card-subtitle">Crear Cuenta</p>
+    </div>
+
+    <form (ngSubmit)="onRegister()" class="register-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre Completo</mat-label>
+        <input
+          matInput
+          [(ngModel)]="nombre"
+          name="nombre"
+          required
+          placeholder="Juan Pérez"
+          aria-label="Nombre Completo"
+        />
+        <mat-error *ngIf="nombreError">El nombre es requerido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Correo Electrónico</mat-label>
+        <input
+          matInput
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          required
+          placeholder="ejemplo@correo.com"
+          aria-label="Correo Electrónico"
+        />
+        <mat-error *ngIf="emailError"
+          >Por favor, ingrese un correo válido</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          [(ngModel)]="password"
+          name="password"
+          required
+          placeholder="••••••••"
+          aria-label="Contraseña"
+        />
+        <button
+          mat-button
+          matSuffix
+          (click)="hidePassword = !hidePassword"
+          type="button"
+          aria-label="Mostrar u ocultar contraseña"
+        >
+          {{ hidePassword ? "Mostrar" : "Ocultar" }}
+        </button>
+        <mat-error *ngIf="passwordError">La contraseña es requerida</mat-error>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="register-button full-width"
+        [disabled]="!nombre || !email || !password"
+      >
+        Registrarse
+      </button>
+
+      <div *ngIf="error" class="error-message">
+        {{ error }}
+      </div>
+
+      <div class="login-link">
+        <span>¿Ya tienes cuenta?</span>
+        <button
+          mat-raised-button
+          color="accent"
+          routerLink="/login"
+          class="login-button"
+          aria-label="Navegar a la página de inicio de sesión"
+        >
+          Iniciar Sesión
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

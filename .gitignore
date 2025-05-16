@@ -11,6 +11,9 @@
 npm-debug.log
 yarn-error.log
 
+# Ignorar archivo generado automáticamente
+src/enviroments/version.ts
+
 # IDEs and editors
 .idea/
 .project
@@ -27,6 +30,13 @@ yarn-error.log
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
+
+# Angular specific
+.angular/
+.editorconfig
+
+# Firebase
+.firebase/
 
 # Miscellaneous
 /.angular/cache

@@ -1,0 +1,26 @@
+.document-table-card {
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 8px;
+    margin: 2rem auto;
+    max-width: 1100px;
+}
+
+.search-bar {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+th.mat-header-cell,
+td.mat-cell {
+    padding: 0.75rem 1rem;
+}
+
+mat-paginator {
+    margin-top: 1.5rem;
+}

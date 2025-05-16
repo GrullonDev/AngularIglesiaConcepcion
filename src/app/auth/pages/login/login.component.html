@@ -1,0 +1,118 @@
+<!-- login.component.html
+<mat-card class="auth-card">
+  <h2>Iniciar Sesión</h2>
+  <form (ngSubmit)="onLogin()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [(ngModel)]="email" name="email" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Contraseña</mat-label>
+      <input
+        matInput
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        required
+      />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="full-width">
+      Entrar
+    </button>
+
+    <button mat-button routerLink="/register" class="full-width">
+      ¿No tienes cuenta? Regístrate
+    </button>
+  </form>
+</mat-card> -->
+
+<div class="login-container">
+  <!-- Hero Background -->
+  <div class="hero-background">
+    <img
+      src="assets/parroquia.jpeg"
+      alt="Parroquia Inmaculada Concepción"
+      class="hero-image"
+    />
+    <div class="hero-overlay"></div>
+  </div>
+
+  <!-- Login Card -->
+  <mat-card class="auth-card">
+    <div class="card-header">
+      <img
+        src="assets/parroquia.jpeg"
+        alt="Parroquia Inmaculada Concepción"
+        class="logo"
+      />
+      <h1 class="card-title">Parroquia Inmaculada Concepción</h1>
+      <p class="card-subtitle">Iniciar Sesión</p>
+    </div>
+
+    <form (ngSubmit)="onLogin()" class="login-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Correo Electrónico</mat-label>
+        <input
+          matInput
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          required
+          placeholder="ejemplo@correo.com"
+          aria-label="Correo Electrónico"
+        />
+        <mat-error *ngIf="emailError"
+          >Por favor, ingrese un correo válido</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          [(ngModel)]="password"
+          name="password"
+          required
+          placeholder="••••••••"
+          aria-label="Contraseña"
+        />
+        <button
+          mat-button
+          matSuffix
+          (click)="hidePassword = !hidePassword"
+          type="button"
+          aria-label="Mostrar u ocultar contraseña"
+        >
+          {{ hidePassword ? "Mostrar" : "Ocultar" }}
+        </button>
+        <mat-error *ngIf="passwordError">La contraseña es requerida</mat-error>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="login-button full-width"
+        [disabled]="!email || !password"
+      >
+        Entrar
+      </button>
+
+      <div class="register-link">
+        <span>¿No tienes cuenta?</span>
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="navigateToRegister()"
+          class="register-button"
+          aria-label="Navegar a la página de registro"
+        >
+          Regístrate
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

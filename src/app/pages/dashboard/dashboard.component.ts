@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartData, ChartOptions, registerables, Chart } from 'chart.js';
 import { DocumentScannerComponent } from '../../shared/document-scanner/document-scanner.component';
@@ -51,10 +52,10 @@ export class DashboardComponent {
   }
 
   crearDocumento() {
-    alert('Funcionalidad para crear documento nuevo');
+    this.router.navigate(['/crear-documento']);
   }
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private router: Router) {
     this.isMobileOrTablet = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
       .test(navigator.userAgent);
   }
@@ -69,7 +70,7 @@ export class DashboardComponent {
   }
 
   public lineChartData: ChartData<'line'> = {
-    labels: ['2000', '2005', '2010', '2015', '2020',],
+    labels: ['2000', '2005', '2010', '2015', '2020'],
     datasets: [
       { data: [25, 30, 10, 20, 15], label: 'Bautizos', fill: true, borderColor: '#42a5f5', backgroundColor: 'rgba(66,165,245,0.2)' },
       { data: [8, 15, 5, 7, 12], label: 'Comuniones', fill: true, borderColor: '#ffa726', backgroundColor: 'rgba(255,167,38,0.2)' },

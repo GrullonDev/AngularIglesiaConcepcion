@@ -1,47 +1,298 @@
+/* General Container */
 .app-container {
     height: 100vh;
+    background-color: #f5f6fa;
+    /* Light background for a serene feel */
 }
 
+/* Header Styles */
 .app-toolbar {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+    /* Marian blue gradient */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 0 16px;
+    height: 64px;
 }
 
-.toolbar-title {
-    font-weight: bold;
-    font-size: 18px;
-    margin-left: 10px;
+.menu-toggle {
+    color: #ffffff;
+}
+
+.header-branding {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    height: 48px;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    /* Subtle hover effect */
+}
+
+.title {
+    font-family: 'Lora', serif;
+    /* Elegant, sacred font */
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 0.5px;
 }
 
 .spacer {
     flex: 1 1 auto;
 }
 
-.app-content {
-    padding: 1rem;
+.logout-button {
+    color: #ffffff;
+    transition: background-color 0.3s ease;
 }
 
+.logout-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+    display: flex;
+    gap: 8px;
+    margin-left: 24px;
+}
+
+.nav-link {
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-link.active-link {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: 500;
+}
+
+.nav-icon {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Drawer Styles */
 .drawer-sidenav {
+    width: 260px;
+    background: #ffffff;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
 
-.sidenav-content {
-    flex: 1;
+.drawer-header {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+    color: #ffffff;
+}
+
+.drawer-logo {
+    height: 40px;
+    border-radius: 4px;
+}
+
+.drawer-title {
+    font-family: 'Lora', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-left: 12px;
+}
+
+.nav-list {
+    flex: 1;
+    padding: 8px 0;
+}
+
+.nav-list a {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+.nav-list a:hover {
+    background-color: #e8f0fe;
+    padding-left: 24px;
+    /* Subtle indent on hover */
+}
+
+.nav-list a.active-link {
+    background-color: #e8f0fe;
+    color: #1e3a8a;
+    font-weight: 500;
 }
 
 .version-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
     text-align: center;
-    font-size: 20px;
-    padding: 1rem 0;
-    background-color: #fff;
+    font-size: 0.9rem;
+    padding: 16px;
+    background-color: #f5f6fa;
+    color: #666;
     border-top: 1px solid #e0e0e0;
-    color: rgba(0, 0, 0, 0.54);
 }
+
+/* Main Content */
+.main-content {
+    padding: 24px;
+    overflow-y: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .title {
+        font-size: 1.3rem;
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    .app-toolbar {
+        height: 56px;
+    }
+
+    .main-content {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.1rem;
+    }
+
+    .logo {
+        height: 32px;
+    }
+}
+// .app-container {
+//     height: 100vh;
+// }
+
+// .app-toolbar {
+//     display: flex;
+//     justify-content: space-between;
+// }
+
+// .toolbar-title {
+//     font-weight: bold;
+//     font-size: 18px;
+//     margin-left: 10px;
+// }
+
+// .spacer {
+//     flex: 1 1 auto;
+// }
+
+// .app-content {
+//     padding: 1rem;
+// }
+
+// .active-link {
+//     font-weight: bold;
+//     color: #1976d2;
+// }
+
+// .drawer-sidenav {
+//     display: flex;
+//     flex-direction: column;
+//     height: 100%;
+// }
+
+// .sidenav-content {
+//     flex: 1;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+// }
+
+// .version-footer {
+//     position: absolute;
+//     bottom: 0;
+//     width: 100%;
+//     text-align: center;
+//     font-size: 20px;
+//     padding: 1rem 0;
+//     background-color: #fff;
+//     border-top: 1px solid #e0e0e0;
+//     color: rgba(0, 0, 0, 0.54);
+// }
+
+/* Estilos generales del header */
+// .header {
+//     display: flex;
+//     align-items: center;
+//     padding: 0 16px;
+//     background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+//     /* Azul mariano degradado */
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+// }
+
+/* Logo */
+// .logo {
+//     height: 40px;
+//     margin-right: 12px;
+// }
+
+/* Título */
+// .title {
+//     font-family: 'Lora', serif;
+//     /* Fuente elegante y serena */
+//     font-size: 1.5rem;
+//     font-weight: 500;
+//     color: #ffffff;
+// }
+
+// /* Botón de cerrar sesión */
+// .logout-button {
+//     color: #ffffff;
+//     transition: background-color 0.3s ease;
+// }
+
+// .logout-button:hover {
+//     background-color: rgba(255, 255, 255, 0.1);
+// }
+
+// /* Media queries para responsividad */
+// @media (max-width: 768px) {
+//     .nav-menu {
+//         display: none;
+//     }
+
+//     .title {
+//         font-size: 1.2rem;
+//     }
+
+//     .logo {
+//         height: 32px;
+//     }
+// }
