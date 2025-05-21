@@ -117,11 +117,9 @@ export class CreateDocumentComponent implements AfterViewInit {
     this.error = '';
 
     // Client-side validation
-    this.nombreNinoError = !this.form.nombreNino;
-    this.padrinosError = !this.form.padrinos;
     this.fechaError = !this.fechaInicio || !this.fechaFin;
 
-    if (this.nombreNinoError || this.padrinosError || this.fechaError || this.form.sacerdote) {
+    if (this.form.nombreNino != undefined && this.form.padrinos != undefined && this.fechaError && this.form.sacerdote != undefined) {
       this.error = 'Por favor, complete todos los campos requeridos.';
       alert(this.error);
       return;

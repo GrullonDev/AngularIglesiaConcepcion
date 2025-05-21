@@ -18,7 +18,7 @@ import { setContext } from '@apollo/client/link/context';
                     };
                 });
 
-                const http = httpLink.create({ uri: 'http://172.20.10.8:3000/graphql' });
+                const http = httpLink.create({ uri: 'http://192.168.40.7:3000/graphql' });
 
                 return {
                     cache: new InMemoryCache(),
