@@ -8,12 +8,18 @@ const GET_DOCUMENTOS = gql`
   query ObtenerClientes {
     findAllClientes {
       id
-      cui
       nombreNino
-      direccion
       parroquia
-      fechasPlaticas
       firmaSacerdote
+      fechaNacimiento
+      fechaBautismo
+      noFolioLibro
+      partida
+      celebrante
+      observaciones
+      campo34
+      campo35
+      campo36
       createdAt
       padrino {
         id

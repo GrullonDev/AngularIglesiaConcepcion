@@ -20,13 +20,13 @@
         <td mat-cell *matCellDef="let element">{{ element.tipo }}</td>
       </ng-container>
 
-      <!-- CUI -->
-      <ng-container matColumnDef="cui">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>CUI</th>
-        <td mat-cell *matCellDef="let element">{{ element.cui }}</td>
+      <!-- No. Folio y Libro -->
+      <ng-container matColumnDef="noFolioLibro">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Folio/Libro</th>
+        <td mat-cell *matCellDef="let element">{{ element.noFolioLibro }}</td>
       </ng-container>
 
-      <!-- Nombre del niño -->
+      <!-- Nombre del Niño -->
       <ng-container matColumnDef="nombre">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
           Nombre del Niño
@@ -54,9 +54,9 @@
 
       <!-- Firmado -->
       <ng-container matColumnDef="firma">
-        <th mat-header-cell *matHeaderCellDef>Firma</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Firmado</th>
         <td mat-cell *matCellDef="let element">
-          {{ element.firma === "sin_firma" ? "No" : "Sí" }}
+          {{ element.firma }}
         </td>
       </ng-container>
 
@@ -64,7 +64,7 @@
       <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef>Acciones</th>
         <td mat-cell *matCellDef="let element">
-          <div style="display: flex; gap: 8px">
+          <div class="action-buttons">
             <button
               mat-icon-button
               color="primary"
@@ -83,6 +83,7 @@
         </td>
       </ng-container>
 
+      <!-- Filas -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>

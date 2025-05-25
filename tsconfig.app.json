@@ -7,6 +7,7 @@
     "lib": ["es2022", "dom", "esnext.asynciterable"], // ✅ este es el que te faltaba
     "allowSyntheticDefaultImports": true,              // ✅ obligatorio para Apollo
     "outDir": "./out-tsc/app",
+    "typeRoots": ["node_modules/@types", "src/custom-typings"],
     "types": [
       "node"
     ]
@@ -17,6 +18,6 @@
     "src/server.ts"
   ],
   "include": [
-    "src/**/*.d.ts"
+    "src/**/*.d.ts", "src/custom-typings.d.ts"
   ]
 }

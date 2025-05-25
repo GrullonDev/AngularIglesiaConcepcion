@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { generarConstanciaPDF } from '../../shared/utils/pdf-utils';
 
 @Component({
   selector: 'app-documentos',
@@ -29,7 +30,16 @@ import { MatButtonModule } from '@angular/material/button';
 })
 
 export class DocumentsComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['tipo', 'cui', 'nombre', 'parroquia', 'sacerdote', 'fecha', 'firma', 'acciones'];
+  displayedColumns: string[] = [
+    'tipo',
+    'noFolioLibro',
+    'nombre',
+    'parroquia',
+    'sacerdote',
+    'fecha',
+    'firma',
+    'acciones'
+  ];
   dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -40,15 +50,31 @@ export class DocumentsComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.documentsService.getDocumentos().subscribe({
       next: documentos => {
-        const mappedData = documentos.map(doc => ({
-          tipo: 'Certificado',
-          cui: doc.cui,
-          nombre: doc.nombreNino,
-          parroquia: doc.parroquia,
-          sacerdote: doc.sacerdote?.nombreCompleto ?? 'No disponible',
-          fecha: new Date(doc.createdAt).toLocaleDateString(),
-          firma: doc.firmaSacerdote
-        }));
+        const mappedData = documentos.map(doc => {
+          return {
+            tipo: 'Certificado',
+            noFolioLibro: doc.noFolioLibro || 'N/A',
+            cui: doc.id,
+            nombre: doc.nombreNino || 'Desconocido',  // 👈 usado en tabla
+            fecha: new Date(doc.createdAt).toLocaleDateString(),  // 👈 usado en tabla
+            parroquia: doc.parroquia || 'Parroquia Inmaculada',
+            sacerdote: doc.sacerdote?.nombreCompleto || 'No disponible',
+            firma: doc.firmaSacerdote === 'sin_firma' ? 'No' : 'Sí',
+
+            // 👇 Datos completos para imprimir
+            _pdfData: {
+              noFolioLibro: doc.noFolioLibro,
+              nombreNino: doc.nombreNino,
+              fechaNacimiento: doc.fechaNacimiento,
+              fechaBautismo: doc.fechaBautismo,
+              padre: doc.padre,
+              madre: doc.madre,
+              padrinos: doc.padrino?.nombre || '',
+              observaciones: doc.observaciones,
+              createdAt: new Date(doc.createdAt).toLocaleDateString()
+            }
+          };
+        });
 
         this.dataSource.data = mappedData;
       },
@@ -58,16 +84,14 @@ export class DocumentsComponent implements OnInit, AfterViewInit {
     });
   }
 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
   applyFilterFromEvent(event: Event) {
     const value = (event.target as HTMLInputElement)?.value || '';
     this.applyFilter(value);
-  }
-
-  ngAfterViewInit() {
-    if (this.dataSource && this.paginator && this.sort) {
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    }
   }
 
   applyFilter(value: string) {
@@ -75,12 +99,15 @@ export class DocumentsComponent implements OnInit, AfterViewInit {
   }
 
   printDocument(element: any) {
-    console.log('Imprimir documento', element);
-    // Aquí puedes abrir un modal o generar PDF
+    if (element._pdfData) {
+      generarConstanciaPDF(element._pdfData);
+    } else {
+      console.error('Datos del documento incompletos');
+    }
   }
 
   editDocument(element: any) {
     console.log('Editar documento', element);
-    // Aquí puedes navegar a otra ruta: this.router.navigate(['/editar', element.id])
+    // Aquí podrías navegar a una ruta de edición con this.router.navigate(['/editar', element.id])
   }
 }
