@@ -28,7 +28,7 @@ export const appConfig: ApplicationConfig = {
 
       return {
         link: authLink.concat(httpLink.create({
-          uri: 'http://192.168.40.7:3000/graphql', // 👈 Asegúrate que este URL esté disponible desde tu navegador
+          uri: 'https://f35f-2803-d100-9980-ff4-2466-9515-478a-c066.ngrok-free.app/graphql', // 👈 Asegúrate que este URL esté disponible desde tu navegador
         })),
         cache: new InMemoryCache(),
       };

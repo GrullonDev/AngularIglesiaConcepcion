@@ -18,7 +18,7 @@ import { setContext } from '@apollo/client/link/context';
                     };
                 });
 
-                const http = httpLink.create({ uri: 'http://192.168.40.7:3000/graphql' });
+                const http = httpLink.create({ uri: 'https://f35f-2803-d100-9980-ff4-2466-9515-478a-c066.ngrok-free.app/graphql' });
 
                 return {
                     cache: new InMemoryCache(),
