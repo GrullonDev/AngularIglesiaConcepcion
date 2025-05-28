@@ -8,10 +8,10 @@
   },
   "scripts": {
     "ng": "ng",
-    "prebuild": "tsc --project tsconfig.scripts.json && node scripts/set-version.js",
+    "prebuild": "tsc --project tsconfig.scripts.json && node dist-scripts/set-version.js",
     "build:prod": "ng build --configuration production",
     "build": "ng build",
-    "deploy": "npm run build && firebase deploy",
+    "deploy": "ng build && firebase deploy",
     "start": "ng serve",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

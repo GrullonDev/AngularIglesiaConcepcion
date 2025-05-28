@@ -1,8 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "CommonJS",
-    "outDir": "./dist-scripts"
+    "module": "nodenext",            // 👈 clave para soportar import assertions
+    "target": "ES2022",              // 👌 recomendado
+    "outDir": "./dist-scripts",
+    "moduleResolution": "nodenext",
+    "resolveJsonModule": true,       // 👈 permite importar JSON
+    "esModuleInterop": true
   },
   "include": ["scripts/**/*"]
 }
