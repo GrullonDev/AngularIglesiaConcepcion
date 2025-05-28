@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/browser",
+    "public": "dist/parroquia-inmaculada/browser/browser",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
