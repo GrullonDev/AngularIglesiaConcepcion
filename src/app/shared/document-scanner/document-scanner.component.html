@@ -1,58 +1,31 @@
-<div class="scanner-container" *ngIf="isMobileOrTablet">
-  <h2 class="scanner-title">Escanear Documento</h2>
+<h2>Escanear Documento</h2>
 
-  <div class="video-wrapper" *ngIf="showWebcam">
-    <webcam
-      [trigger]="triggerObservable"
-      (imageCapture)="handleImage($event)"
-      [videoOptions]="{ facingMode: 'environment' }"
-      class="webcam-feed"
-    ></webcam>
-  </div>
+<input type="file" (change)="onFileSelected($event)" accept="image/*" />
 
-  <div class="preview-wrapper" *ngIf="capturedImage">
-    <img [src]="capturedImage" alt="Imagen capturada" class="preview-img" />
-  </div>
+<p *ngIf="processing">Procesando imagen...</p>
 
-  <div class="acciones">
-    <button
-      *ngIf="showWebcam"
-      mat-raised-button
-      color="primary"
-      (click)="captureImage()"
-    >
-      <mat-icon>photo_camera</mat-icon>
-      Tomar Foto
-    </button>
+<!-- Muestra el texto crudo escaneado -->
+<textarea [value]="scannedText" rows="6" readonly></textarea>
 
-    <div *ngIf="cargando" class="loader">
-      <mat-icon>hourglass_empty</mat-icon>
-      <p>Procesando texto, por favor espera...</p>
-    </div>
+<!-- Formulario autocompletado -->
+<form (ngSubmit)="guardar()">
+  <label>Nombre del Niño</label>
+  <input [(ngModel)]="formData.nombreNino" name="nombreNino" required />
 
-    <button
-      *ngIf="capturedImage"
-      mat-raised-button
-      color="accent"
-      (click)="procesarImagen()"
-    >
-      <mat-icon>description</mat-icon>
-      Generar PDF
-    </button>
+  <label>CUI</label>
+  <input [(ngModel)]="formData.cui" name="cui" required />
 
-    <button
-      *ngIf="capturedImage"
-      mat-stroked-button
-      color="warn"
-      (click)="retakePhoto()"
-    >
-      <mat-icon>replay</mat-icon>
-      Repetir
-    </button>
+  <label>Dirección</label>
+  <input [(ngModel)]="formData.direccion" name="direccion" />
 
-    <button mat-stroked-button color="warn" (click)="cerrar()">
-      <mat-icon>close</mat-icon>
-      Cancelar
-    </button>
-  </div>
-</div>
+  <label>Parroquia</label>
+  <input [(ngModel)]="formData.parroquia" name="parroquia" />
+
+  <label>Fechas Pláticas</label>
+  <input [(ngModel)]="formData.fechasPlaticas" name="fechasPlaticas" />
+
+  <label>Firma Sacerdote</label>
+  <input [(ngModel)]="formData.firmaSacerdote" name="firmaSacerdote" />
+
+  <button type="submit">Guardar</button>
+</form>

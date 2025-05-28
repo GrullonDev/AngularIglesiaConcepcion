@@ -44,7 +44,12 @@ export class DashboardComponent {
   mostrarEscaner = false;
 
   agregarDocumento() {
-    alert('Funcionalidad para agregar documento aquí');
+    this.dialog.open(DocumentScannerComponent, {
+      width: '100vw',
+      maxWidth: '100vw',
+      height: '100vh',
+      panelClass: 'scanner-dialog-fullscreen'
+    });
   }
 
   agendarActividad() {
@@ -58,15 +63,6 @@ export class DashboardComponent {
   constructor(private dialog: MatDialog, private router: Router) {
     this.isMobileOrTablet = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
       .test(navigator.userAgent);
-  }
-
-  escanearDocumento() {
-    this.dialog.open(DocumentScannerComponent, {
-      width: '100vw',
-      maxWidth: '100vw',
-      height: '100vh',
-      panelClass: 'scanner-dialog-fullscreen'
-    });
   }
 
   public lineChartData: ChartData<'line'> = {

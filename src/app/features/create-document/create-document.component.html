@@ -1,63 +1,219 @@
-<form class="document-form" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="fill">
-    <mat-label>Nombre del niño</mat-label>
-    <input matInput [(ngModel)]="form.nombreNino" name="nombreNino" required />
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Nombres de padrinos</mat-label>
-    <input matInput [(ngModel)]="form.padrinos" name="padrinos" required />
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Fechas de pláticas</mat-label>
-    <mat-date-range-input [rangePicker]="rangePicker">
-      <input
-        matStartDate
-        [(ngModel)]="fechaInicio"
-        name="fechaInicio"
-        placeholder="Fecha de inicio"
-      />
-      <input
-        matEndDate
-        [(ngModel)]="fechaFin"
-        name="fechaFin"
-        placeholder="Fecha de finalización"
-      />
-    </mat-date-range-input>
-    <mat-datepicker-toggle
-      matSuffix
-      [for]="rangePicker"
-    ></mat-datepicker-toggle>
-    <mat-date-range-picker #rangePicker></mat-date-range-picker>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Nombre del sacerdote</mat-label>
-    <input matInput [(ngModel)]="form.sacerdote" name="sacerdote" />
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Parroquia</mat-label>
-    <input matInput [(ngModel)]="form.parroquia" name="parroquia" />
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Dirección</mat-label>
-    <input matInput [(ngModel)]="form.direccion" name="direccion" />
-  </mat-form-field>
-
-  <div class="firma-section">
-    <label>Firma del sacerdote</label>
-    <!-- <input type="file" (change)="onFirmaUpload($event)" />
-    <p>O firme directamente:</p>
-    <canvas #signaturePad class="signature-canvas"></canvas>
-    <button mat-button color="warn" (click)="clearSignature()">
-      Limpiar firma
-    </button> -->
+<div class="document-container">
+  <!-- Hero Background -->
+  <div class="hero-background">
+    <img
+      src="assets/parroquia.webp"
+      alt="Parroquia Inmaculada Concepción"
+      class="hero-image"
+    />
+    <div class="hero-overlay"></div>
   </div>
 
-  <button mat-raised-button color="primary" type="submit">
-    Generar Constancia
-  </button>
-</form>
+  <!-- Document Card -->
+  <mat-card class="document-card">
+    <div class="card-header">
+      <img
+        src="assets/parroquia.webp"
+        alt="Parroquia Inmaculada Concepción"
+        class="logo"
+      />
+      <h1 class="card-title">Parroquia Inmaculada Concepción</h1>
+      <p class="card-subtitle">Generar Constancia</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" class="document-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>No. de folio y libro</mat-label>
+        <input
+          matInput
+          [(ngModel)]="form.noFolioLibro"
+          name="noFolioLibro"
+          required
+          placeholder="004S205"
+          aria-label="No. de folio y libro"
+        />
+        <mat-error *ngIf="noFolioLibroError"
+          >El numero de folio y libro es requerido</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre del Niño</mat-label>
+        <input
+          matInput
+          [(ngModel)]="form.nombreNino"
+          name="nombreNino"
+          required
+          placeholder="Juan Pérez"
+          aria-label="Nombre del Niño"
+        />
+        <mat-error *ngIf="nombreNinoError"
+          >El nombre del niño es requerido</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Fecha que nació</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [(ngModel)]="fechaNacimiento"
+          name="fechaNacimiento"
+          [min]="minDate"
+          [max]="maxDate"
+          placeholder="Selecciona una fecha"
+          required
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="multi-year"></mat-datepicker>
+        <mat-error *ngIf="fechaNacimientoError"
+          >La fecha de nacimiento es requerida</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre del Padre</mat-label>
+        <input
+          matInput
+          [(ngModel)]="form.padre"
+          name="padre"
+          required
+          placeholder="José López"
+          aria-label="Nombres de Padre"
+        />
+        <mat-error *ngIf="padreError"
+          >Los nombres del padre son requeridos</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre de la Madre</mat-label>
+        <input
+          matInput
+          [(ngModel)]="form.madre"
+          name="madre"
+          required
+          placeholder="María Gómez"
+          aria-label="Nombres de la Madre"
+        />
+        <mat-error *ngIf="madreError"
+          >Los nombres de la madre son requeridos</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombres de Padrinos</mat-label>
+        <input
+          matInput
+          [(ngModel)]="form.padrinos"
+          name="padrinos"
+          required
+          placeholder="María Gómez y José López"
+          aria-label="Nombres de Padrinos"
+        />
+        <mat-error *ngIf="padrinosError"
+          >Los nombres de los padrinos son requeridos</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre del Sacerdote</mat-label>
+        <input
+          matInput
+          [(ngModel)]="form.sacerdote"
+          name="sacerdote"
+          placeholder="Padre Miguel Ángel"
+          aria-label="Nombre del Sacerdote"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Parroquia</mat-label>
+        <input
+          matInput
+          [(ngModel)]="form.parroquia"
+          name="parroquia"
+          placeholder="Inmaculada Concepción"
+          aria-label="Parroquia"
+        />
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="submit-button full-width"
+        [disabled]="!form.nombreNino || !form.padrinos"
+      >
+        Generar Constancia
+      </button>
+
+      <div *ngIf="error" class="error-message">
+        {{ error }}
+      </div>
+    </form>
+  </mat-card>
+</div>
+
+<!--       <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Fechas de Pláticas</mat-label>
+        <mat-date-range-input [rangePicker]="rangePicker" required>
+          <input
+            matStartDate
+            [(ngModel)]="fechaInicio"
+            name="fechaInicio"
+            placeholder="Fecha de Inicio"
+            aria-label="Fecha de Inicio"
+          />
+          <input
+            matEndDate
+            [(ngModel)]="fechaFin"
+            name="fechaFin"
+            placeholder="Fecha de Finalización"
+            aria-label="Fecha de Finalización"
+          />
+        </mat-date-range-input>
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="rangePicker"
+        ></mat-datepicker-toggle>
+        <mat-date-range-picker #rangePicker></mat-date-range-picker>
+        <mat-error *ngIf="fechaError"
+          >Las fechas de pláticas son requeridas</mat-error
+        >
+      </mat-form-field> -->
+
+<!-- 
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Dirección</mat-label>
+        <input
+          matInput
+          [(ngModel)]="form.direccion"
+          name="direccion"
+          placeholder="123 Calle Principal, Ciudad"
+          aria-label="Dirección"
+        />
+      </mat-form-field> -->
+
+<!-- Firma electronica, ESTA SE QUEDA COMANTADA YA QUE NO ES URGENTE PARA ESTA APLICACION -->
+<!--       <div class="firma-section">
+        <label>Firma del Sacerdote</label>
+        <canvas
+          #signaturePad
+          class="signature-canvas"
+          (mousedown)="startDrawing($event)"
+          (mousemove)="draw($event)"
+          (mouseup)="stopDrawing()"
+          (touchstart)="startDrawing($event)"
+          (touchmove)="draw($event)"
+          (touchend)="stopDrawing()"
+        ></canvas>
+        <button
+          mat-button
+          color="warn"
+          (click)="clearSignature()"
+          class="clear-signature-button"
+        >
+          Limpiar Firma
+        </button>
+      </div> -->

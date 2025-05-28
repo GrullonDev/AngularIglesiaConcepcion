@@ -22,7 +22,7 @@
 
 <div class="imagen-container">
   <img
-    src="assets/parroquia.jpeg"
+    src="assets/parroquia.webp"
     alt="Parroquia Inmaculada Concepcion"
     class="imagen"
   />
@@ -60,7 +60,7 @@
   <!-- Hero Section -->
   <div class="hero-section">
     <img
-      src="assets/parroquia.jpeg"
+      src="assets/parroquia.webp"
       alt="Parroquia Inmaculada Concepción"
       class="hero-image"
     />
@@ -125,14 +125,11 @@
         *ngIf="isMobileOrTablet"
         mat-raised-button
         color="primary"
-        (click)="escanearDocumento()"
+        (click)="agregarDocumento()"
       >
         <mat-icon>photo_camera</mat-icon>
         Escanear Documento
       </button>
     </div>
   </div>
-
-  <!-- Document Scanner -->
-  <app-document-scanner *ngIf="mostrarEscaner"></app-document-scanner>
 </div>

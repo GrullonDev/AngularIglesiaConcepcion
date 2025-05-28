@@ -1,5 +1,7 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
+package-lock.json
+
 # Compiled output
 /dist
 /tmp
@@ -37,6 +39,20 @@ src/enviroments/version.ts
 
 # Firebase
 .firebase/
+firebase-debug.log
+.firebaserc
+firebase.json
+
+# Firebase Functions
+functions/node_modules/
+functions/.env
+functions/lib/
+functions/logs/
+functions/.runtimeconfig.json
+
+# Firebase Hosting Cache
+.firebase/hosting.*
+.firebase/hosting.cache
 
 # Miscellaneous
 /.angular/cache

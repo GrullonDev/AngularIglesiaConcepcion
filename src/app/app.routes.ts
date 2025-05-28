@@ -9,6 +9,7 @@ import { RegisterComponent } from './auth/pages/register/register.component';
 import { authGuard } from './auth/guards/auth.guard';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
+// import { EditDocumentComponent } from './features/edit-document/edit-document.component';
 
 export const routes: Routes = [
     {
@@ -22,6 +23,7 @@ export const routes: Routes = [
             { path: 'documentos', component: DocumentsComponent, canActivate: [authGuard] },
             { path: 'actividades', component: ActivitiesComponent, canActivate: [authGuard] },
             { path: 'crear-documento', component: CreateDocumentComponent, canActivate: [authGuard] },
+            // { path: 'editar-documento/:id', component: EditDocumentComponent, canActivate: [authGuard] },
         ],
     },
     {

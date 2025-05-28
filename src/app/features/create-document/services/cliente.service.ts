@@ -24,23 +24,24 @@ const CREAR_CLIENTE = gql`
 @Injectable({ providedIn: 'root' })
 
 export class ClienteService {
-    constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo) { }
 
-    crearCliente(data: {
-        cui: string;
-        nombre: string;
-        padrinos: string;
-        fecha: string;
-        sacerdote: string;
-        parroquia: string;
-        direccion: string;
-        firma: string;
-    }) {
-        console.log('[GraphQL Payload] Enviando a backend:', data); // 🔍
+  crearCliente(data: {
+    noFolioLibro: string;
+    nombre: string;
+    fechaNacimiento: string;
+    padre: string;
+    madre: string;
+    padrinos: string;
+    sacerdote: string;
+    parroquia: string;
+    firma: string;
+  }) {
+    console.log('[GraphQL Payload] Enviando a backend:', data); // 🔍
 
-        return this.apollo.mutate({
-            mutation: CREAR_CLIENTE,
-            variables: data,
-        });
-    }
+    return this.apollo.mutate({
+      mutation: CREAR_CLIENTE,
+      variables: data,
+    });
+  }
 }
