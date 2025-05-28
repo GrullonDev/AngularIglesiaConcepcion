@@ -5,31 +5,20 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 const GET_DOCUMENTOS = gql`
-  query ObtenerClientes {
-    findAllClientes {
-      id
-      nombreNino
-      parroquia
-      firmaSacerdote
-      fechaNacimiento
-      fechaBautismo
-      noFolioLibro
-      partida
-      celebrante
+  query ObtenerDocumentos($tipo: String,) {
+    findAllDocumentos(tipo: $tipo) {
+      tipo
+      creadoEn
       observaciones
-      campo34
-      campo35
-      campo36
-      createdAt
-      padrino {
+      cliente {
         id
-        nombre
-        cantidad
+        noFolioLibro
+        observaciones
+        nombreNino
       }
       sacerdote {
         id
         nombreCompleto
-        cantidad
       }
     }
   }
@@ -42,11 +31,12 @@ const GET_DOCUMENTOS = gql`
 export class DocumentsService {
   constructor(private apollo: Apollo) { }
 
-  getDocumentos(): Observable<any[]> {
+  getDocumentos(tipo: string = ''): Observable<any[]> {
     return this.apollo.watchQuery<any>({
-      query: GET_DOCUMENTOS
+      query: GET_DOCUMENTOS,
+      variables: { tipo: tipo || null }
     }).valueChanges.pipe(
-      map(result => result.data.findAllClientes)
+      map(result => result.data.findAllDocumentos)
     );
   }
 }

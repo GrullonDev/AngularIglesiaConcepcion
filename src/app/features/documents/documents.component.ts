@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
 import { CommonModule } from '@angular/common';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
@@ -22,21 +24,24 @@ import { generarConstanciaPDF } from '../../shared/utils/pdf-utils';
     MatSortModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule, // ✅ Agregado aquí
-    MatButtonModule // ✅ Necesario para los botones icono
+    MatIconModule,       // ✅ Agregado aquí
+    MatButtonModule,     // ✅ Necesario para los botones icono
+    MatSelectModule,     // ✅ Necesario para <mat-select>
+    MatOptionModule      // ✅ Necesario para <mat-option>
   ],
   templateUrl: './documents.component.html',
   styleUrls: ['./documents.component.scss']
 })
 
 export class DocumentsComponent implements OnInit, AfterViewInit {
+  selectedTipo: string = '';
   displayedColumns: string[] = [
     'tipo',
+    'fecha',
+    'observaciones',
     'noFolioLibro',
     'nombre',
-    'parroquia',
     'sacerdote',
-    'fecha',
     'firma',
     'acciones'
   ];
@@ -48,31 +53,41 @@ export class DocumentsComponent implements OnInit, AfterViewInit {
   constructor(private documentsService: DocumentsService) { }
 
   ngOnInit() {
-    this.documentsService.getDocumentos().subscribe({
+    this.cargarDocumentos();
+  }
+
+  cargarDocumentos() {
+    this.documentsService.getDocumentos(this.selectedTipo).subscribe({
       next: documentos => {
+        if (!documentos || !Array.isArray(documentos)) {
+          console.error('La respuesta no es un arreglo:', documentos);
+          return;
+        }
+
         const mappedData = documentos.map(doc => {
           return {
-            tipo: 'Certificado',
-            noFolioLibro: doc.noFolioLibro || 'N/A',
-            cui: doc.id,
-            nombre: doc.nombreNino || 'Desconocido',  // 👈 usado en tabla
-            fecha: new Date(doc.createdAt).toLocaleDateString(),  // 👈 usado en tabla
-            parroquia: doc.parroquia || 'Parroquia Inmaculada',
+            tipo: doc.tipo,
+            noFolioLibro: doc.cliente.noFolioLibro || 'N/A',
+            nombre: doc.cliente.nombreNino || 'Desconocido',  // 👈 usado en tabla
+            fecha: new Date(doc.createdAt).toLocaleDateString(), // 👈 usado en tabla
             sacerdote: doc.sacerdote?.nombreCompleto || 'No disponible',
-            firma: doc.firmaSacerdote === 'sin_firma' ? 'No' : 'Sí',
+            firma: doc.cliente.firmaSacerdote === 'sin_ firma' ? 'No' : 'Sí',
+            observaciones: doc.observaciones || 'Sin observaciones',
 
             // 👇 Datos completos para imprimir
             _pdfData: {
-              noFolioLibro: doc.noFolioLibro,
-              nombreNino: doc.nombreNino,
-              fechaNacimiento: doc.fechaNacimiento,
-              fechaBautismo: doc.fechaBautismo,
-              padre: doc.padre,
-              madre: doc.madre,
-              padrinos: doc.padrino?.nombre || '',
+              tipo: doc.tipo,
               observaciones: doc.observaciones,
-              createdAt: new Date(doc.createdAt).toLocaleDateString()
-            }
+              creadoEn: doc.creadoEn,
+              noFolioLibro: doc.cliente.noFolioLibro,
+              nombreNino: doc.cliente.nombreNino,
+              fechaNacimiento: doc.cliente.fechaNacimiento,
+              fechaBautismo: doc.cliente.fechaBautismo,
+              padre: doc.cliente.padre,
+              madre: doc.cliente.madre,
+              padrinos: doc.padrino?.nombre || '',
+              createdAt: new Date(doc.creadoEn).toLocaleDateString(),
+            },
           };
         });
 
@@ -87,6 +102,10 @@ export class DocumentsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  filtrarPorTipo() {
+    this.cargarDocumentos();
   }
 
   applyFilterFromEvent(event: Event) {
