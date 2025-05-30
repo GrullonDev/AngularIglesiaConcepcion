@@ -57,7 +57,6 @@ export class CreateDocumentComponent implements AfterViewInit {
 
   @ViewChild('signaturePad') signaturePad!: ElementRef<HTMLCanvasElement>;
   private ctx!: CanvasRenderingContext2D;
-  private isDrawing = false;
 
   constructor(private clienteService: ClienteService, private router: Router) { }
 
