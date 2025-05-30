@@ -42,6 +42,7 @@ export class CreateDocumentComponent implements AfterViewInit {
   };
 
   fechaNacimiento: Date | null = null;
+  fechaBautizo: Date | null = null;
   minDate = new Date(1940, 0, 1);
   maxDate = new Date();
 
@@ -51,6 +52,7 @@ export class CreateDocumentComponent implements AfterViewInit {
   madreError = false;
   padrinosError = false;
   fechaNacimientoError = false;
+  fechaBautizoError = false;
   error = '';
 
   @ViewChild('signaturePad') signaturePad!: ElementRef<HTMLCanvasElement>;
@@ -121,18 +123,16 @@ export class CreateDocumentComponent implements AfterViewInit {
 
   onSubmit() {
     this.nombreNinoError = !this.form.nombreNino;
-    this.padreError = !this.form.padre;
-    this.madreError = !this.form.madre;
     this.padrinosError = !this.form.padrinos;
     this.fechaNacimientoError = !this.fechaNacimiento;
+    this.fechaBautizoError = !this.fechaBautizo;
     this.error = '';
 
     if (
       this.nombreNinoError ||
-      this.padreError ||
-      this.madreError ||
+      this.fechaBautizo ||
       this.padrinosError ||
-      this.fechaNacimientoError
+      this.fechaNacimientoError || this.fechaBautizoError
     ) {
       this.error = 'Por favor, complete todos los campos requeridos.';
       return;
@@ -141,7 +141,8 @@ export class CreateDocumentComponent implements AfterViewInit {
     const payload = {
       noFolioLibro: this.form.noFolioLibro,
       nombre: this.form.nombreNino,
-      fechaNacimiento: this.fechaNacimiento?.toISOString().split('T')[0] || '',
+      fechaNacimiento: (this.fechaNacimiento as Date)?.toISOString().split('T')[0] || '',
+      fechaBautizo: (this.fechaBautizo as unknown as Date)?.toISOString().split('T')[0] || '',
       padre: this.form.padre,
       madre: this.form.madre,
       padrinos: this.form.padrinos,

@@ -72,6 +72,25 @@
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Fecha que se bautizo</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          [(ngModel)]="fechaBautizo"
+          name="fechaBautizo"
+          [min]="minDate"
+          [max]="maxDate"
+          placeholder="Selecciona una fecha"
+          required
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="multi-year"></mat-datepicker>
+        <mat-error *ngIf="fechaBautizoError"
+          >La fecha de bautizo es requerida</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
         <mat-label>Nombre del Padre</mat-label>
         <input
           matInput
@@ -81,9 +100,6 @@
           placeholder="José López"
           aria-label="Nombres de Padre"
         />
-        <mat-error *ngIf="padreError"
-          >Los nombres del padre son requeridos</mat-error
-        >
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
@@ -96,9 +112,6 @@
           placeholder="María Gómez"
           aria-label="Nombres de la Madre"
         />
-        <mat-error *ngIf="madreError"
-          >Los nombres de la madre son requeridos</mat-error
-        >
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">

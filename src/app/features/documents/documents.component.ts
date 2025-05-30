@@ -60,15 +60,20 @@ export class DocumentsComponent implements OnInit, AfterViewInit {
       next: documentos => {
         this.dataSource.data = documentos.map(doc => ({
           tipo: doc.tipo,
-          noFolioLibro: doc.cliente?.noFolioLibro || 'N/A',
-          nombre: doc.cliente?.nombreNino || 'Desconocido',
           fecha: new Date(doc.fechaEmision || doc.creadoEn).toLocaleDateString(),
-          sacerdote: doc.sacerdote?.nombreCompleto || 'No disponible',
-          firma: doc.cliente?.firmaSacerdote === 'sin_firma' ? 'No' : 'Sí',
           observaciones: doc.observaciones || 'Sin observaciones',
           _pdfData: {
-            ...doc,
-            createdAt: new Date(doc.creadoEn).toLocaleDateString(),
+            tipo: doc.tipo,
+            fechaEmision: doc.fechaEmision,
+            creadoEn: doc.creadoEn,
+            observaciones: doc.observaciones,
+            noFolioLibro: doc.cliente?.noFolioLibro,
+            partida: doc.cliente?.partida,
+            nombreNino: doc.cliente?.nombreNino,
+            padre: doc.cliente?.padre,
+            madre: doc.cliente?.madre,
+            padrinos: doc.padrino?.nombre,
+            sacerdote: doc.sacerdote?.nombreCompleto,
           },
         }));
         this.isLoading = false;
