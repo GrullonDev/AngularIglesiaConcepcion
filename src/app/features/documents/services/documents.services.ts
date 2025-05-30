@@ -10,16 +10,8 @@ const GET_DOCUMENTOS = gql`
       tipo
       creadoEn
       observaciones
-      cliente {
-        id
-        noFolioLibro
-        observaciones
-        nombreNino
-      }
-      sacerdote {
-        id
-        nombreCompleto
-      }
+      fechaEmision
+      id
     }
   }
 `;

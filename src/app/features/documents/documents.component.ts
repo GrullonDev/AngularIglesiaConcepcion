@@ -56,45 +56,30 @@ export class DocumentsComponent implements OnInit, AfterViewInit {
     this.cargarDocumentos();
   }
 
+  isLoading = false;
+
   cargarDocumentos() {
+    this.isLoading = true;
     this.documentsService.getDocumentos(this.selectedTipo).subscribe({
       next: documentos => {
-        if (!documentos || !Array.isArray(documentos)) {
-          console.error('La respuesta no es un arreglo:', documentos);
-          return;
-        }
-
-        const mappedData = documentos.map(doc => {
-          return {
-            tipo: doc.tipo,
-            noFolioLibro: doc.cliente.noFolioLibro || 'N/A',
-            nombre: doc.cliente.nombreNino || 'Desconocido',  // 👈 usado en tabla
-            fecha: new Date(doc.createdAt).toLocaleDateString(), // 👈 usado en tabla
-            sacerdote: doc.sacerdote?.nombreCompleto || 'No disponible',
-            firma: doc.cliente.firmaSacerdote === 'sin_ firma' ? 'No' : 'Sí',
-            observaciones: doc.observaciones || 'Sin observaciones',
-
-            // 👇 Datos completos para imprimir
-            _pdfData: {
-              tipo: doc.tipo,
-              observaciones: doc.observaciones,
-              creadoEn: doc.creadoEn,
-              noFolioLibro: doc.cliente.noFolioLibro,
-              nombreNino: doc.cliente.nombreNino,
-              fechaNacimiento: doc.cliente.fechaNacimiento,
-              fechaBautismo: doc.cliente.fechaBautismo,
-              padre: doc.cliente.padre,
-              madre: doc.cliente.madre,
-              padrinos: doc.padrino?.nombre || '',
-              createdAt: new Date(doc.creadoEn).toLocaleDateString(),
-            },
-          };
-        });
-
-        this.dataSource.data = mappedData;
+        this.dataSource.data = documentos.map(doc => ({
+          tipo: doc.tipo,
+          noFolioLibro: doc.cliente?.noFolioLibro || 'N/A',
+          nombre: doc.cliente?.nombreNino || 'Desconocido',
+          fecha: new Date(doc.fechaEmision || doc.creadoEn).toLocaleDateString(),
+          sacerdote: doc.sacerdote?.nombreCompleto || 'No disponible',
+          firma: doc.cliente?.firmaSacerdote === 'sin_firma' ? 'No' : 'Sí',
+          observaciones: doc.observaciones || 'Sin observaciones',
+          _pdfData: {
+            ...doc,
+            createdAt: new Date(doc.creadoEn).toLocaleDateString(),
+          },
+        }));
+        this.isLoading = false;
       },
       error: err => {
         console.error('Error al obtener documentos', err);
+        this.isLoading = false;
       }
     });
   }

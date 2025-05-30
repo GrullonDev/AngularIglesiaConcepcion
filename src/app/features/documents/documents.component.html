@@ -1,6 +1,7 @@
 <mat-card class="document-table-card">
   <h2>Listado de Documentos</h2>
 
+  
   <!-- Contenedor de búsqueda -->
   <mat-form-field appearance="fill" class="filter-select">
     <mat-label>Filtrar por tipo</mat-label>
@@ -12,7 +13,7 @@
       <mat-option value="MATRIMONIO">Matrimonio</mat-option>
     </mat-select>
   </mat-form-field>
-
+  
   <div class="table-container">
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
       <!-- Tipo -->
