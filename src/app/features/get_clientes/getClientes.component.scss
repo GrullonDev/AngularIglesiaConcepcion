@@ -1,0 +1,68 @@
+.search-bar {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 1.5rem;
+  }
+  
+.document-table-card {
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    margin: 2rem auto;
+    max-width: 1300px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+  
+  .table-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #1e3a8a;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .filter-select {
+    width: 280px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-spacing: 0;
+    font-size: 14px;
+  }
+  
+  th.mat-header-cell,
+  td.mat-cell {
+    padding: 1rem;
+    text-align: left;
+    vertical-align: middle;
+  }
+  
+  th.mat-header-cell {
+    background-color: #f0f4f8;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  td.mat-cell {
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  mat-paginator {
+    margin-top: 2rem;
+  }

@@ -1,0 +1,72 @@
+<mat-card class="document-table-card">
+  <h2>Listado de Clientes</h2>
+
+<!-- Filtro por nombre del cliente -->
+<mat-form-field appearance="outline" class="search-bar">
+  <mat-label>Buscar por nombre del niño o fecha de bautismo</mat-label>
+  <input
+    matInput
+    type="text"
+    (input)="applyFilterFromEvent($event)"
+    placeholder="Ej: Juan Pérez"
+  />
+  <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+
+<!-- Tabla -->
+<div class="table-container" *ngIf="!isLoading">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <!-- Tipo -->
+    <ng-container matColumnDef="tipo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
+      <td mat-cell *matCellDef="let element">{{ element.tipo }}</td>
+    </ng-container>
+
+    <!-- Nombre del Niño -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre del Niño</th>
+      <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+    </ng-container>
+
+    <!-- Fecha de Bautismo -->
+    <ng-container matColumnDef="fechaBautismo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha Bautismo</th>
+      <td mat-cell *matCellDef="let element">{{ element.fechaBautismo }}</td>
+    </ng-container>
+
+    <!-- Fecha Emisión -->
+    <ng-container matColumnDef="fechaEmision">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de Emisión</th>
+      <td mat-cell *matCellDef="let element">{{ element.fechaEmision }}</td>
+    </ng-container>
+
+    <!-- Observaciones -->
+    <ng-container matColumnDef="observaciones">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Observaciones</th>
+      <td mat-cell *matCellDef="let element">{{ element.observaciones }}</td>
+    </ng-container>
+
+    <!-- Acciones -->
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="action-buttons">
+          <button mat-icon-button color="primary" (click)="printDocument(element)">
+            <mat-icon>print</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="editDocument(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+  <!-- Paginador -->
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 30, 50, 100]" showFirstLastButtons></mat-paginator>
+</mat-card>

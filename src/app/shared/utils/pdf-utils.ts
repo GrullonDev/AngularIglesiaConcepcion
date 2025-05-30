@@ -6,6 +6,14 @@ import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 (pdfMake as any).vfs = (pdfFonts as any).pdfMake?.vfs;
 
 export function generarConstanciaPDF(data: any) {
+    fechaGeneracion: new Date().toLocaleString('es-GT', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      })
+
     const docDefinition = {
         content: [
             {
@@ -38,7 +46,7 @@ export function generarConstanciaPDF(data: any) {
                     `Padrinos: ${data.padrinos}\n`,
                     `Al margen se lee: ${data.observaciones || '-'}\n`,
                     `A petición de la parte interesada y para: USO CORRESPONDIENTE\n`,
-                    `Se extiende la presente en el despacho parroquial: ${data.createdAt}`,
+                    `Se extiende la presente en el despacho parroquial: ${data.fechaGeneracion}`,
                 ],
                 fontSize: 12,
                 lineHeight: 1.5,
