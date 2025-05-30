@@ -18,7 +18,7 @@ import { setContext } from '@apollo/client/link/context';
                     };
                 });
 
-                const http = httpLink.create({ uri: 'https://522c-190-104-118-128.ngrok-free.app/graphql' });
+                const http = httpLink.create({ uri: 'https://able-prawn-singularly.ngrok-free.app/graphql' });
 
                 return {
                     cache: new InMemoryCache(),
