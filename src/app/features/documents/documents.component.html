@@ -1,8 +1,7 @@
 <mat-card class="document-table-card">
   <h2>Listado de Documentos</h2>
 
-  
-  <!-- Contenedor de búsqueda -->
+  <!-- Filtro por tipo -->
   <mat-form-field appearance="fill" class="filter-select">
     <mat-label>Filtrar por tipo</mat-label>
     <mat-select [(value)]="selectedTipo" (selectionChange)="filtrarPorTipo()">
@@ -13,19 +12,21 @@
       <mat-option value="MATRIMONIO">Matrimonio</mat-option>
     </mat-select>
   </mat-form-field>
-  
-  <div class="table-container">
+
+  <!-- Tabla de documentos -->
+  <div class="table-container" *ngIf="!isLoading">
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
       <!-- Tipo -->
       <ng-container matColumnDef="tipo">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</th>
         <td mat-cell *matCellDef="let element">{{ element.tipo }}</td>
       </ng-container>
 
-      <!-- Fecha de Creación -->
-      <ng-container matColumnDef="fecha">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
-        <td mat-cell *matCellDef="let element">{{ element.fecha }}</td>
+      <!-- Fecha de emisión -->
+      <ng-container matColumnDef="fechaEmision">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha de Emisión</th>
+        <td mat-cell *matCellDef="let element">{{ element.fechaEmision | date }}</td>
       </ng-container>
 
       <!-- Observaciones -->
@@ -34,73 +35,24 @@
         <td mat-cell *matCellDef="let element">{{ element.observaciones }}</td>
       </ng-container>
 
-      <!-- No. Folio y Libro -->
-      <ng-container matColumnDef="noFolioLibro">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Folio/Libro</th>
-        <td mat-cell *matCellDef="let element">{{ element.noFolioLibro }}</td>
-      </ng-container>
-
-      <!-- Nombre del Niño -->
-      <ng-container matColumnDef="nombre">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          Nombre del Niño
-        </th>
-        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
-      </ng-container>
-
-      <!-- Parroquia -->
-      <!-- <ng-container matColumnDef="parroquia">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Parroquia</th>
-        <td mat-cell *matCellDef="let element">{{ element.parroquia }}</td>
-      </ng-container> -->
-
-      <!-- Sacerdote -->
-      <ng-container matColumnDef="sacerdote">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sacerdote</th>
-        <td mat-cell *matCellDef="let element">{{ element.sacerdote }}</td>
-      </ng-container>
-
-      <!-- Firmado -->
-      <ng-container matColumnDef="firma">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Firmado</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.firma }}
-        </td>
-      </ng-container>
-
       <!-- Acciones -->
       <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef>Acciones</th>
         <td mat-cell *matCellDef="let element">
-          <div class="action-buttons">
-            <button
-              mat-icon-button
-              color="primary"
-              (click)="printDocument(element)"
-            >
-              <mat-icon>print</mat-icon>
-            </button>
-            <button
-              mat-icon-button
-              color="accent"
-              (click)="editDocument(element)"
-            >
-              <mat-icon>edit</mat-icon>
-            </button>
-          </div>
+          <button mat-icon-button color="primary" (click)="printDocument(element)">
+            <mat-icon>print</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="editDocument(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
         </td>
       </ng-container>
 
-      <!-- Filas -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
 
   <!-- Paginador -->
-  <mat-paginator
-    [pageSize]="10"
-    [pageSizeOptions]="[10, 20, 50]"
-    showFirstLastButtons
-  ></mat-paginator>
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
 </mat-card>

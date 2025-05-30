@@ -37,12 +37,8 @@ export class DocumentsComponent implements OnInit, AfterViewInit {
   selectedTipo: string = '';
   displayedColumns: string[] = [
     'tipo',
-    'fecha',
+    'fechaEmision',
     'observaciones',
-    'noFolioLibro',
-    'nombre',
-    'sacerdote',
-    'firma',
     'acciones'
   ];
   dataSource = new MatTableDataSource<any>();
