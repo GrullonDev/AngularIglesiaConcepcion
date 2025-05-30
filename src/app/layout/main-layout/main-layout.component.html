@@ -26,21 +26,21 @@
       </a>
       <a
         mat-list-item
+        routerLink="/clientes"
+        routerLinkActive="active-link"
+        (click)="closeDrawer()"
+      >
+        <mat-icon class="nav-icon">clients</mat-icon>
+        Clientes
+      </a>
+      <a
+        mat-list-item
         routerLink="/documentos"
         routerLinkActive="active-link"
         (click)="closeDrawer()"
       >
-        <mat-icon class="nav-icon">description</mat-icon>
+        <mat-icon class="nav-icon">documents</mat-icon>
         Documentos
-      </a>
-      <a
-        mat-list-item
-        routerLink="/actividades"
-        routerLinkActive="active-link"
-        (click)="closeDrawer()"
-      >
-        <mat-icon class="nav-icon">event</mat-icon>
-        Actividades
       </a>
       <a
         mat-list-item
@@ -55,12 +55,12 @@
     <div class="version-footer">Versión {{ version }}</div>
   </mat-sidenav>
 
-  <!-- Main Content -->
+   <!-- Main Content -->
   <mat-sidenav-content class="app-content">
-    <!-- Header -->
+     <!-- Header --> 
     <mat-toolbar class="app-toolbar">
       <!-- Menu Toggle Button (Mobile) -->
-      <button mat-icon-button (click)="drawer.toggle()" class="menu-toggle">
+       <button mat-icon-button (click)="drawer.toggle()" class="menu-toggle">
         <mat-icon>menu</mat-icon>
       </button>
 
@@ -74,7 +74,7 @@
         <span class="title">Parroquia Inmaculada Concepción</span>
       </div>
 
-      <!-- Desktop Navigation -->
+      <!-- Desktop Navigation
       <div class="desktop-nav" *ngIf="!isMobile">
         <a
           mat-button
@@ -92,7 +92,7 @@
           class="nav-link"
         >
           <mat-icon class="nav-icon">description</mat-icon>
-          Documentos
+          Listado de Clientes
         </a>
         <a
           mat-button
@@ -101,7 +101,7 @@
           class="nav-link"
         >
           <mat-icon class="nav-icon">event</mat-icon>
-          Actividades
+          Listado de Documentos
         </a>
         <a
           mat-button
@@ -112,7 +112,7 @@
           <mat-icon class="nav-icon">assessment</mat-icon>
           Reportes
         </a>
-      </div>
+      </div> -->
 
       <span class="spacer"></span>
 

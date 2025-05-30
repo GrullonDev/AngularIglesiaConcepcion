@@ -38,14 +38,14 @@ export class getClientesComponent implements OnInit, AfterViewInit {
   searchNombre = '';
   searchFecha = '';
 
-displayedColumns: string[] = [
-  'tipo',
-  'nombre',
-  'fechaBautismo',
-  'fechaEmision',
-  'observaciones',
-  'acciones'
-];
+  displayedColumns: string[] = [
+    'tipo',
+    'nombre',
+    'fechaBautismo',
+    'fechaEmision',
+    'observaciones',
+    'acciones'
+  ];
 
   dataSource = new MatTableDataSource<any>();
   clientesMapeados: any[] = [];
