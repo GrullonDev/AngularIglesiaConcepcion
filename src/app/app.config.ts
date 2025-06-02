@@ -28,7 +28,7 @@ export const appConfig: ApplicationConfig = {
 
       return {
         link: authLink.concat(httpLink.create({
-          uri: 'https://able-prawn-singularly.ngrok-free.app/graphql', // 👈 Asegúrate que este URL esté disponible desde tu navegador
+          uri: 'https://iglesia-app-ghzt7uisga-uc.a.run.app/graphql', // 👈 Asegúrate que este URL esté disponible desde tu navegador
         })),
         cache: new InMemoryCache(),
       };

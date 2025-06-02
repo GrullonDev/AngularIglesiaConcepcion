@@ -74,7 +74,7 @@ export class DashboardComponent {
   }
 
   cargarResumen() {
-    this.dashboardService.getCountDocuments().subscribe({
+    this.dashboardService.getCountDocumentsByType().subscribe({
       next: (data) => {
         console.log('📊 Resumen recibido:', data);  // ✅ Este log es importante
         this.resumen = data;

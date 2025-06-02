@@ -4,12 +4,12 @@ import gql from 'graphql-tag';
 import { map } from 'rxjs/operators';
 
 const GET_COUNT_DOCUMENTS = gql`
-    query ObtenerDocumentosPorTipo {
-        countDocumentosByTipo {
-            matrimonios
-            confirmaciones
-            comuniones
+    query CountTotalDocumentosPorTipo {
+        countTotalDocumentosPorTipo {
             bautizos
+            comuniones
+            confirmaciones
+            matrimonios
         }
     }
 `;
@@ -19,9 +19,9 @@ const GET_COUNT_DOCUMENTS = gql`
 export class DashboardService {
     constructor(private apollo: Apollo) { }
 
-    getCountDocuments() {
+    getCountDocumentsByType() {
         return this.apollo
             .watchQuery<any>({ query: GET_COUNT_DOCUMENTS })
-            .valueChanges.pipe(map((result) => result.data.countTotalDocumentos));
+            .valueChanges.pipe(map((result) => result.data.countTotalDocumentosPorTipo));
     }
 }
