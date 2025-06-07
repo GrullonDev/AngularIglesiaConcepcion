@@ -37,7 +37,7 @@ export class CreateDocumentComponent implements AfterViewInit {
     madre: '',
     padrinos: '',
     sacerdote: '',
-    parroquia: '',
+    parroquia: 'Parroquia Inmaculada Concepción',
     firma: ''
   };
 
@@ -75,51 +75,6 @@ export class CreateDocumentComponent implements AfterViewInit {
     this.ctx.scale(ratio, ratio);
   }
 
-  /*   startDrawing(event: MouseEvent | TouchEvent) {
-      this.isDrawing = true;
-      const { x, y } = this.getCoordinates(event);
-      this.ctx.beginPath();
-      this.ctx.moveTo(x, y);
-    }
-  
-    draw(event: MouseEvent | TouchEvent) {
-      if (!this.isDrawing) return;
-      const { x, y } = this.getCoordinates(event);
-      this.ctx.lineTo(x, y);
-      this.ctx.stroke();
-    }
-  
-    stopDrawing() {
-      this.isDrawing = false;
-      this.ctx.closePath();
-      this.form.firma = this.signaturePad?.nativeElement.toDataURL('image/png') || '';
-    } */
-
-  /*   getCoordinates(event: MouseEvent | TouchEvent) {
-      const canvas = this.signaturePad.nativeElement;
-      const rect = canvas.getBoundingClientRect();
-      let x: number, y: number;
-  
-      if (event instanceof MouseEvent) {
-        x = event.clientX - rect.left;
-        y = event.clientY - rect.top;
-      } else {
-        const touch = event.touches[0];
-        x = touch.clientX - rect.left;
-        y = touch.clientY - rect.top;
-      }
-  
-      return { x, y };
-    }
-  
-    clearSignature() {
-      const canvas = this.signaturePad?.nativeElement;
-      if (!canvas) return;
-  
-      this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-      this.form.firma = '';
-    } */
-
   onSubmit() {
     this.nombreNinoError = !this.form.nombreNino;
     this.padrinosError = !this.form.padrinos;
@@ -129,9 +84,9 @@ export class CreateDocumentComponent implements AfterViewInit {
 
     if (
       this.nombreNinoError ||
-      this.fechaBautizo ||
       this.padrinosError ||
-      this.fechaNacimientoError || this.fechaBautizoError
+      this.fechaNacimientoError ||
+      this.fechaBautizoError
     ) {
       this.error = 'Por favor, complete todos los campos requeridos.';
       return;
